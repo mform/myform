@@ -1,0 +1,10 @@
+body{
+	height: 600px;
+    background: #ccc;
+}
+.main-bar{
+    background: #fff;
+}
+.no-padding {
+    padding: 0;
+}

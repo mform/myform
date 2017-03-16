@@ -1,0 +1,145 @@
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background: #ffffff;
+    border: 0px;
+}
+body{
+	
+    background: #ccc;
+}
+.top{
+}
+.content{
+	
+    background: #ccc;
+    padding-top: 2px;
+    padding-bottom: 40px;
+}
+.bottom{
+	background: #ccc;
+}
+.error {
+    color: red;
+}
+.right{
+    color: green;
+}
+.edit-bar {
+    width: 70%;
+    padding: 30px 70px;
+    border-radius: 6px;
+    background: #fff;
+}
+.edit-bar img{
+    width: 200px;
+    height: 200px;
+    border: 2px #000 solid;
+}
+.main-bar{
+    float: left;
+    width: 70%;
+    background: #fff;
+    padding: 20px;
+}
+.side-bar{
+    float: right;
+    width: 30%;
+    padding :2px 2px 0px;
+    text-align: center;
+    /*background: #eeeeee;*/
+}
+/* user-show页面 */
+.user-show{
+    background: #fff;
+    padding: 20px 40px;
+    float: left;
+    width: 70%;
+}
+.user-show-list{
+    width: 20%;
+    float: left;
+    margin-top: 30px;
+}
+.user-show-main{
+    width: 80%;
+    float: right;
+}
+.user-show-top{
+    text-align: center;
+}
+.user-show-bottom{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+.user-show-img{
+    width: 150px;
+    height: 150px;
+}
+.user-show-detail{
+    width: 100%;
+}
+.user-show-detail li{
+    font-size: 16px;
+    list-style-type: none;
+    padding: 8px;
+}
+.user-show-detail li>div:first-child{
+    width: 40%;
+    text-align: right;
+    float: left;
+    padding-right: 40px;
+    font-weight: 700;
+}
+.user-show-detail li>div:last-child{
+    width: 60%;
+    float: right;
+}
+/* POST列表项 */
+.post-list{
+
+}
+.post-top *{
+    color: #555555;
+    font-size: 18px;
+}
+.post-bottom {
+    font-size: 12px;
+}
+.post-right{
+    float: right;
+}
+/**/
+/* START 话题分类导航栏 */
+.topic-nav{
+    padding: 0px;
+    margin-bottom: 40px;
+}
+.topic-nav li{
+    list-style: none;
+    float: left;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.topic-nav a{
+    text-decoration: none;
+    color: #000000;
+}
+.topic-nav .active{
+    background: #000000;
+}
+.topic-nav .active{
+    color: #ffffff;
+}
+.topic-nav li:hover{
+    background: #cccccc;
+    color: #000000;
+}
+.collapse .nav .button-rounded{
+	margin: 7px;
+}
+.carousel-inner>.item{
+	height: 300px;
+}
+/* END 话题分类导航栏 */
