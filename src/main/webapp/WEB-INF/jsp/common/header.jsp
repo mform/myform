@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="<c:url value="/resource/module/bootstrap/css/bootstrap.min.css"/>"/>
 <link rel="stylesheet" href="<c:url value="/resource/css/style.css"/>"/>
-<link rel="stylesheet" href="<c:url value="/resource/css/buttons.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/resource/module/button/css/buttons.css"/>"/>
 <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="<c:url value="/resource/module/jquery/jquery-1.12.3/jquery-1.12.3.min.js"/>"></script>
 <script src="<c:url value="/resource/module/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="<c:url value="/resource/module/jquery-cookie/jquery.cookie.js"/>"></script>
 <script src="<c:url value="/resource/js/topic.js"/>"></script>
-<script src="<c:url value="/resource/js/buttons.js"/>"></script>
+<script src="<c:url value="/resource/module/button/js/buttons.js"/>"></script>
 <div class="top">
     <nav class="navbar-inverse">
         <%-- Logo --%>

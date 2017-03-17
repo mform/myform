@@ -93,9 +93,15 @@ public class UserController {
     @RequestMapping(value = "/valid", method = RequestMethod.POST)
     public ValidationResponse valid(String username, String password, HttpSession httpSession) {
         User u = userService.getByUsernameAndPassword(username, SecurityUtil.MD5(password));
+        int userId=userService.getIDByUserName(username);
         if (u != null) {
             httpSession.setAttribute("sessionUser", u);
-            return ResponseUtil.successValidation(MessageConstants.USER_LOGIN_SUCCESS);
+            if(userId==1){
+            	return ResponseUtil.successValidation(MessageConstants.USER_LOGIN_ADMIN);
+            }else{
+            	return ResponseUtil.successValidation(MessageConstants.USER_LOGIN_SUCCESS);
+            }
+            
         }
         return ResponseUtil.failValidation(MessageConstants.USER_LOGIN_FAIL);
     }

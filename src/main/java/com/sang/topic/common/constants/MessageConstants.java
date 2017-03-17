@@ -13,6 +13,7 @@ public interface MessageConstants {
     String USER_CREATE_REPEAT = "用户名重复";
 
     String USER_LOGIN_SUCCESS = "登录成功";
+    String USER_LOGIN_ADMIN = "管理员登录";
     String USER_LOGIN_FAIL = "用户名或密码错误";
     String USER_PASSWORD_FAIL = "旧密码错误";
     String USER_LOGIN_REQUIRE = "请登录后操作";

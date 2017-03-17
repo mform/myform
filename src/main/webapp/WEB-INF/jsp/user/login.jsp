@@ -45,6 +45,7 @@
 
 <script>
     $(function () {
+    	/* 记住密码 */
         var rem = $.cookie("rememberPassword");
         if (rem != undefined) {
             $("input[name='username']").val($.cookie("username"));
@@ -64,9 +65,66 @@
                 } else {
                     $.removeCookie("rememberPassword");
                 }
-                window.location.href = '<c:url value="/"/>';
             }
         });
+       function showAlert(parameters) {
+    	    var $formAlert = parameters.$formAlert;
+    	    var data = parameters.data;
+    	    var callback = parameters.callback;
+
+    	    var status = data.status;
+    	    var message = data.message;
+    	    if (status == SUCCESS) {
+    	        $formAlert.removeClass("alert-danger");
+    	        $formAlert.addClass("alert-success");
+    	    } else {
+    	        $formAlert.addClass("alert-danger");
+    	    }
+    	    $formAlert.show();
+    	    $formAlert.removeClass("hidden");
+    	    $formAlert.text(message);
+    	    setTimeout(function () {
+    	        $formAlert.fadeOut(50, function () {
+    	            if (callback != undefined && status == SUCCESS) {
+    	                callback(data);
+    	            }
+    	        });
+    	    }, ALERT_TIME);
+    	}
+    	function myAjaxForm(parameters) {
+    	    var url = parameters.url;
+    	    var params = parameters.params;
+    	    var $formAlert = parameters.$formAlert;
+    	    var callback = parameters.callback;
+    	    if (params == undefined)
+    	        params = $("#ajaxForm").serialize();
+    	    if ($formAlert == undefined)
+    	        $formAlert = $("#formAlert");
+    	    $.ajax({
+    	        type: "post",
+    	        url: url,
+    	        data: params,
+    	        dataType: "json",
+    	        success: function (data) {
+    	            if (callback != undefined) {
+    	                showAlert({
+    	                    $formAlert: $formAlert,
+    	                    data: data,
+    	                    callback: callback
+    	                });
+    	            } else {
+    	                showAlert({$formAlert: $formAlert, data: data});
+    	            }
+    	            
+    	            if(data.message=="管理员登录"){
+    	         	   console.log(data.message);
+    	         	   window.location.href = '<c:url value="/admin"/>';
+    	            }else{
+    	         	   window.location.href = '<c:url value="/"/>';
+    	            }
+    	        }
+    	    });
+    	}
     }
 </script>
 </body>
