@@ -29,6 +29,13 @@
                 </div>
                 <span class="col-md-4 help-inline"><form:errors path="password"/></span>
             </div>
+            <div class="form-group" id="email">
+                <label class="col-md-4 control-label">邮箱</label>
+                <div class="col-md-4">
+                    <form:input path="email" cssClass="form-control"/>
+                </div>
+                <span class="col-md-4 help-inline"><form:errors path="email"/></span>
+            </div>
             <div id="formAlert" class="alert hidden" role="alert"></div>
             <div class="col-md-12">
                 <span class="col-md-7"></span>

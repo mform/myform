@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>解惑</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"/>

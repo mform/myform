@@ -35,8 +35,8 @@
             <div id="formAlert" class="alert hidden" role="alert"></div>
             <div class="col-md-12">
                 <span class="col-md-7"></span>
-                 <button class="button button-3d  button-circle button-jumbo" type="button" onclick="login()"><i class="fa fa-sign-in"></i></button>
-        
+                 
+                 <input class="btn btn-default" type="button" onclick="login()" value="登录"/>
             </div>
         </form>
     </div>
@@ -67,30 +67,6 @@
                 }
             }
         });
-       function showAlert(parameters) {
-    	    var $formAlert = parameters.$formAlert;
-    	    var data = parameters.data;
-    	    var callback = parameters.callback;
-
-    	    var status = data.status;
-    	    var message = data.message;
-    	    if (status == SUCCESS) {
-    	        $formAlert.removeClass("alert-danger");
-    	        $formAlert.addClass("alert-success");
-    	    } else {
-    	        $formAlert.addClass("alert-danger");
-    	    }
-    	    $formAlert.show();
-    	    $formAlert.removeClass("hidden");
-    	    $formAlert.text(message);
-    	    setTimeout(function () {
-    	        $formAlert.fadeOut(50, function () {
-    	            if (callback != undefined && status == SUCCESS) {
-    	                callback(data);
-    	            }
-    	        });
-    	    }, ALERT_TIME);
-    	}
     	function myAjaxForm(parameters) {
     	    var url = parameters.url;
     	    var params = parameters.params;

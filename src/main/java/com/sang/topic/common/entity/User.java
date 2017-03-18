@@ -14,10 +14,9 @@ public class User {
     @Size(max = 16, min = 5, message = "密码长度应该为{min}-{max}")
     private String password;
 
-    @Size(min = 5, max = 100, message = "邮箱长度应该为{min}-{max}")
-    @Email(message = "请填写正确的邮箱号")
+    @Pattern(regexp = "^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+", message = "请填写正确的邮箱号:123@qq.com")
     private String email;
-
+    
     @Pattern(regexp = "^[\\d-]*$", message = "请填写正确的手机号")
     private String phone;
 

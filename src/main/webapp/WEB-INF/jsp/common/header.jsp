@@ -34,11 +34,23 @@
 						      <i class="fa fa-user"></i> ${sessionUser.username}
 						    </button>
 						    <ul class="button-dropdown-list is-below">
+						    <c:choose>
+						      <c:when test="${sessionUser.id == 1}">
+							      <li><a href="<c:url value="/admin"/>"><i class="fa fa-heart-o"></i>  管理员界面</a></li>
+							      <li><a href="<c:url value="/u/${sessionUser.id}"/>"><i class="fa fa-heart-o"></i>  个人信息</a></li>
+							      <li><a href="<c:url value="/p/new?topicId=${id}"/>"><i class="fa fa-file-text"></i>  发帖子</a></li>
+							      <li class="button-dropdown-divider">
+							        <a href="<c:url value="/u/logout"/>"><i class="fa fa-power-off"></i>  退出登录</a>
+							      </li>
+							  </c:when>
+						      <c:otherwise>
 						      <li><a href="<c:url value="/u/${sessionUser.id}"/>"><i class="fa fa-heart-o"></i>  个人信息</a></li>
 						      <li><a href="<c:url value="/p/new?topicId=${id}"/>"><i class="fa fa-file-text"></i>  发帖子</a></li>
 						      <li class="button-dropdown-divider">
 						        <a href="<c:url value="/u/logout"/>"><i class="fa fa-power-off"></i>  退出登录</a>
 						      </li>
+						       </c:otherwise>
+						    </c:choose>
 						    </ul>
 						  </span>
                         </c:otherwise>

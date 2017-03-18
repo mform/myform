@@ -22,7 +22,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 </button>
-                <a class="navbar-brand" href="<c:url value="/admin/"/>">Topic Admin</a>
+                <a class="navbar-brand" href="<c:url value="/admin/"/>">解惑 Admin</a>
             </div>
 
             <ul class="nav navbar-nav">
@@ -33,7 +33,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="<c:url value="/" />">Topic</a></li>
+                    <li><a href="<c:url value="/" />">首页</a></li>
                     <c:if test="${sessionUser != null}">
                         <li><a href="<c:url value="/u/${sessionUser.id}"/>">${sessionUser.username}</a></li>
                         <li><a href="<c:url value="/u/logout"/>">logout</a></li>
