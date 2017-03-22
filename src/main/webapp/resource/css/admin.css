@@ -8,3 +8,14 @@ body{
 .no-padding {
     padding: 0;
 }
+#header{
+	width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+.jumbotron{
+	padding-top: 57px;
+}
+#main{
+	padding-top: 57px;
+}

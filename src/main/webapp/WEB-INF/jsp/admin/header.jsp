@@ -28,7 +28,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/admin/topic/"/>">话题管理</a></li>
                 <li><a href="<c:url value="/admin/user/"/>">用户管理</a></li>
-                <li><a href="<c:url value="/admin/collect/"/>">采集管理</a></li>
+                <%-- <li><a href="<c:url value="/admin/collect/"/>">采集管理</a></li> --%>
             </ul>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

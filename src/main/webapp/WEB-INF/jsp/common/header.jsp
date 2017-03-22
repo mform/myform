@@ -25,6 +25,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <c:choose>
                         <c:when test="${sessionUser == null}">
+                      
                           <a href="<c:url value="/u/login"/>" class="button button-3d button-small button-rounded button-pill" role="button">登录</a>
                           <a href="<c:url value="/u/new" />" class="button button-3d button-small  button-royal button-pill" role="button">注册</a>
                         </c:when>
@@ -36,11 +37,11 @@
 						    <ul class="button-dropdown-list is-below">
 						    <c:choose>
 						      <c:when test="${sessionUser.id == 1}">
-							      <li><a href="<c:url value="/admin"/>"><i class="fa fa-heart-o"></i>  管理员界面</a></li>
-							      <li><a href="<c:url value="/u/${sessionUser.id}"/>"><i class="fa fa-heart-o"></i>  个人信息</a></li>
-							      <li><a href="<c:url value="/p/new?topicId=${id}"/>"><i class="fa fa-file-text"></i>  发帖子</a></li>
+							      <li><a href="<c:url value="/admin"/>"><i class="fa fa-users"></i>&nbsp; 管理员界面</a></li>
+							      <li><a href="<c:url value="/u/${sessionUser.id}"/>"><i class="fa fa-heart-o"></i>&nbsp;  个人信息</a></li>
+							      <li><a href="<c:url value="/p/new?topicId=${id}"/>"><i class="fa fa-file-text"></i>&nbsp;  发帖子</a></li>
 							      <li class="button-dropdown-divider">
-							        <a href="<c:url value="/u/logout"/>"><i class="fa fa-power-off"></i>  退出登录</a>
+							        <a href="<c:url value="/u/logout"/>"><i class="fa fa-power-off"></i>&nbsp;  退出登录</a>
 							      </li>
 							  </c:when>
 						      <c:otherwise>

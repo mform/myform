@@ -29,6 +29,7 @@
                 <div class="col-sm-8">
                     <div class="checkbox">
                         <label><input type="checkbox" name="rememberPassword">记住密码</label>
+                        <a class="pwd_right">忘记密码</a>
                     </div>
                 </div>
             </div>

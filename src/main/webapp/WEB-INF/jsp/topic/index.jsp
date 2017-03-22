@@ -39,18 +39,29 @@
             <div class="list-group">
                 <c:forEach items="${posts}" var="post">
                     <li class="list-group-item">
-                        <div class="post-right">
-                                ${post.commentsNumber}
+                        
+                        <div class="post-bottom clearfix" >
+	                        <div class="author-div">
+	                         <a class="author-head" href="<c:url value="/u/${post.userUsername}"/>"><img src="<c:url value="/resource/image/author.png"/>"></a>
+	                        </div>
+	                        <div class="author-content">
+	                        	<span>${post.userUsername}</span>
+	                            <spring:eval expression="post.createTime"/>
+	                        </div>       
                         </div>
-                        <div class="post-top">
+                        <div class="post-top ">
                             <a href="<c:url value="/p/${post.id}"/>">${post.title}</a>
                         </div>
                         <div class="post-bottom">
-                            作者：<a href="<c:url value="/u/${post.userUsername}"/>">${post.userUsername}</a>
-                            创建时间：<spring:eval expression="post.createTime"/>
-                            最后回复时间：<spring:eval expression="post.lastTime"/>
+                            <i class="fa fa-eye" title="浏览数"></i>12
+                            <i class="fa fa-envelope" title="回复数"></i>${post.commentsNumber}
+                            <i class="fa fa-thumbs-up" title="点赞数"></i>3
                         </div>
-
+                        
+					   <%--  <div class="topic-img">
+					        <img src="<c:url value="/resource/image/screenshot/one.jpg"/>"/>
+					    </div> --%>
+					    
                     </li>
                 </c:forEach>
             </div>
