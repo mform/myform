@@ -33,6 +33,8 @@
                         <a href="<c:url value="/u/${comment.userUsername}"/>">${comment.userUsername}</a>:
                         发表时间：<spring:eval expression="comment.createTime"/>
                         <pre>${comment.content}</pre>
+                         <i class="fa fa-thumbs-up" title="点赞数">  </i>
+                         <i class="fa fa-thumbs-down" title="反对数">  </i>
                     </li>
                 </c:forEach>
             </ul>
