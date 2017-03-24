@@ -61,7 +61,7 @@ CREATE TABLE `topic_post` (
   `watch_number` int(11) NOT NULL DEFAULT '0',
   `last_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `last_watch_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `last_watch_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `post_user_fk` (`user_id`),
   KEY `post_topic_fk` (`topic_id`),
@@ -127,15 +127,12 @@ CREATE TABLE `topic_user` (
   `status` varchar(25) DEFAULT NULL,
   `change_pwd_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `register_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `topic_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `com_post_fk` (`post_id`),
   KEY `user_role_fk` (`role_id`),
-  CONSTRAINT `com_post_fk` FOREIGN KEY (`post_id`) REFERENCES `topic_post` (`id`),
   CONSTRAINT `user_role_fk` FOREIGN KEY (`role_id`) REFERENCES `topic_role` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of topic_user
 -- ----------------------------
-INSERT INTO `topic_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '123@qq.com', '123-', 'default.png', '1', '0');
+INSERT INTO `topic_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '123@qq.com', '123-', 'default.png', '1', '0','0','','0000-00-00 00:00:00','0000-00-00 00:00:00');
