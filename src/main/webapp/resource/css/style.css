@@ -196,4 +196,8 @@ body{
 .pwd_right:hover{
 	text-decoration: none;
 }
+.list-group i{
+	margin-left: 6px;
+	cursor: pointer;
+}
 /* END 话题分类导航栏 */
