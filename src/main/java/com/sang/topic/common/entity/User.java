@@ -1,6 +1,9 @@
 package com.sang.topic.common.entity;
 
-import org.hibernate.validator.constraints.Email;
+
+import com.sang.topic.common.format.annotation.TopicDateFormat;
+
+import java.util.Date;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -25,8 +28,19 @@ public class User {
     private Integer roleId;
 
     private Integer ban;
+    
+    private Integer scores;
+    
+    private String status;
+    
+    @TopicDateFormat
+    private Date changepwdtime;
 
-    private Role role;
+    @TopicDateFormat
+    private Date registertime;
+
+    
+	private Role role;
 
     public void setPhoto(String photo) {
         this.photo = photo;
@@ -99,4 +113,37 @@ public class User {
     public void setBan(Integer ban) {
         this.ban = ban;
     }
+    
+    public Integer getScores() {
+		return scores;
+	}
+
+	public void setScores(Integer scores) {
+		this.scores = scores;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Date getChangepwdtime() {
+		return changepwdtime;
+	}
+
+	public void setChangepwdtime(Date changepwdtime) {
+		this.changepwdtime = changepwdtime;
+	}
+
+	public Date getRegistertime() {
+		return registertime;
+	}
+
+	public void setRegistertime(Date registertime) {
+		this.registertime = registertime;
+	}
+
 }

@@ -9,9 +9,12 @@
         <result column="discard" property="discard" jdbcType="INTEGER"/>
         <result column="user_username" property="userUsername" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="user_photo"  property="userphoto"  jdbcType="VARCHAR"/>
+        <result column="agree" property="agree" jdbcType="INTEGER"/>
+        <result column="disagree"  property="disagree" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, content, user_id, post_id, discard, user_username, create_time
+    id, content, user_id, post_id, discard, user_username, create_time,user_photo,agree,disagree
   </sql>
     <!--  -->
     <select id="selectCount" resultType="Integer">
@@ -42,10 +45,11 @@
     <insert id="insert" parameterType="com.sang.topic.common.entity.Comments">
     insert into topic_comments (id, content, user_id, 
       post_id, discard, user_username, 
-      create_time)
+      create_time,user_photo,agree,disagree)
     values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{postId,jdbcType=INTEGER}, #{discard,jdbcType=INTEGER}, #{userUsername,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{createTime,jdbcType=TIMESTAMP}, #{userphoto,jdbcType=VARCHAR}, #{agree,jdbcType=INTEGER},
+      #{disagree,jdbcType=INTEGER})
   </insert>
     <insert id="insertSelective" parameterType="com.sang.topic.common.entity.Comments">
         insert into topic_comments
@@ -71,6 +75,15 @@
             <if test="createTime != null">
                 create_time,
             </if>
+            <if test="userphoto != null">
+                user_photo,
+            </if>
+            <if test="agree != null">
+                agree,
+            </if>
+            <if test="disagree != null">
+                disagree,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -93,6 +106,15 @@
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userphoto != null">
+                #{userphoto,jdbcType=VARCHAR},
+            </if>
+            <if test="agree != null">
+                #{agree,jdbcType=INTEGER},
+            </if>
+            <if test="disagree != null">
+                #{disagree,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
@@ -117,6 +139,15 @@
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
+            <if test="userphoto != null">
+                user_photo = #{userphoto,jdbcType=VARCHAR},
+            </if>
+            <if test="agree != null">
+                agree = #{agree,jdbcType=INTEGER},
+            </if>
+            <if test="disagree != null">
+                disagree = #{disagree,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -127,7 +158,10 @@
       post_id = #{postId,jdbcType=INTEGER},
       discard = #{discard,jdbcType=INTEGER},
       user_username = #{userUsername,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_photo = #{userphoto,jdbcType=VARCHAR},
+      agree = #{agree,jdbcType=INTEGER},
+      disagree = #{disagree,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

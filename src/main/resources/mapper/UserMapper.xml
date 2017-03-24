@@ -10,6 +10,10 @@
     <result column="photo" property="photo" jdbcType="VARCHAR" />
     <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="ban" property="ban" jdbcType="INTEGER" />
+    <result column="scores" property="scores" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="change_pwd_time" property="changepwdtime" jdbcType="TIMESTAMP" />
+    <result column="register_time" property="registertime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="UserRoleResultMap" type="com.sang.topic.common.entity.User" extends="BaseResultMap">
     <association property="role" javaType="com.sang.topic.common.entity.Role">
@@ -18,7 +22,7 @@
     </association>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, password, email, phone, photo, role_id, ban
+    id, username, password, email, phone, photo, role_id, ban,scores,status,change_pwd_time,register_time
   </sql>
   <!--  -->
   <select id="selectCount" resultType="java.lang.Integer">
@@ -71,10 +75,12 @@
   <insert id="insert" parameterType="com.sang.topic.common.entity.User" >
     insert into topic_user (id, username, password, 
       email, phone, photo, 
-      role_id, ban)
+      role_id, ban,scores,status,
+      change_pwd_time,register_time)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
-      #{roleId,jdbcType=INTEGER}, #{ban,jdbcType=INTEGER})
+      #{roleId,jdbcType=INTEGER}, #{ban,jdbcType=INTEGER}, #{scores,jdbcType=INTEGER},
+      #{status,jdbcType=VARCHAR}, #{changepwdtime,jdbcType=TIMESTAMP}, #{registertime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.sang.topic.common.entity.User" >
     insert into topic_user
@@ -103,6 +109,19 @@
       <if test="ban != null" >
         ban,
       </if>
+      <if test="scores != null" >
+        scores,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="changepwdtime != null" >
+        change_pwd_time,
+      </if>
+      <if test="registertime != null" >
+        register_time,
+      </if>
+      
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -128,6 +147,18 @@
       </if>
       <if test="ban != null" >
         #{ban,jdbcType=INTEGER},
+      </if>
+      <if test="scores != null" >
+        #{scores,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="changepwdtime != null" >
+        #{changepwdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -155,6 +186,18 @@
       <if test="ban != null" >
         ban = #{ban,jdbcType=INTEGER},
       </if>
+      <if test="scores != null" >
+        scores = #{scores,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="changepwdtime != null" >
+        change_pwd_time = #{changepwdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertime != null" >
+        register_time = #{registertime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -166,7 +209,11 @@
       phone = #{phone,jdbcType=VARCHAR},
       photo = #{photo,jdbcType=VARCHAR},
       role_id = #{roleId,jdbcType=INTEGER},
-      ban = #{ban,jdbcType=INTEGER}
+      ban = #{ban,jdbcType=INTEGER},
+      scores = #{scores,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      change_pwd_time = #{changepwdtime,jdbcType=TIMESTAMP},
+      register_time = #{registertime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

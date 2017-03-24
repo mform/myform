@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2016-06-15 13:38:45
+Date: 2017-03-24 20:45:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `topic_comments` (
   `discard` int(11) NOT NULL DEFAULT '0',
   `user_username` varchar(255) NOT NULL,
   `user_photo` varchar(255) NOT NULL DEFAULT 'default.png',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT '2017-03-24 20:45:40' ON UPDATE CURRENT_TIMESTAMP,
   `floor` int(11) DEFAULT NULL,
   `agree` int(11) NOT NULL DEFAULT '0',
   `disagree` int(11) NOT NULL DEFAULT '0',
@@ -60,8 +60,8 @@ CREATE TABLE `topic_post` (
   `comments_number` int(11) NOT NULL DEFAULT '0',
   `watch_number` int(11) NOT NULL DEFAULT '0',
   `last_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `last_watch_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` timestamp NOT NULL DEFAULT '2017-03-24 20:45:40',
+  `last_watch_time` timestamp NOT NULL DEFAULT '2017-03-24 20:45:40',
   PRIMARY KEY (`id`),
   KEY `post_user_fk` (`user_id`),
   KEY `post_topic_fk` (`topic_id`),
@@ -125,8 +125,8 @@ CREATE TABLE `topic_user` (
   `ban` int(11) NOT NULL DEFAULT '0',
   `scores` int(11) NOT NULL DEFAULT '0',
   `status` varchar(25) DEFAULT NULL,
-  `change_pwd_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `register_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `change_pwd_time` timestamp NOT NULL DEFAULT '2017-03-24 20:45:40',
+  `register_time` timestamp NOT NULL DEFAULT '2017-03-24 20:45:40',
   PRIMARY KEY (`id`),
   KEY `user_role_fk` (`role_id`),
   CONSTRAINT `user_role_fk` FOREIGN KEY (`role_id`) REFERENCES `topic_role` (`id`)
@@ -135,4 +135,4 @@ CREATE TABLE `topic_user` (
 -- ----------------------------
 -- Records of topic_user
 -- ----------------------------
-INSERT INTO `topic_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '123@qq.com', '123-', 'default.png', '1', '0','0','','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `topic_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '123@qq.com', '123-', 'default.png', '1', '0','0','','2017-03-24 20:45:40','0000-00-00 00:00:002017-03-24 20:45:40');

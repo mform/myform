@@ -12,10 +12,15 @@
     <result column="comments_number" property="commentsNumber" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />
+    <result column="keywords"  property="keywords"  jdbcType="VARCHAR" />
+    <result column="user_photo"  property="userphoto"  jdbcType="VARCHAR" />
+    <result column="topic_tag"  property="topictag"  jdbcType="VARCHAR" />
+    <result column="watch_number"  property="watchnumber"  jdbcType="INTEGER" />
+    <result column="last_watch_time"  property="lastwatchtime"  jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, title, content, user_id, topic_id, discard, user_username, comments_number, create_time, 
-    last_time
+    last_time,keywords,user_photo,topic_tag,watch_number,last_watch_time
   </sql>
   <!--  -->
   <select id="selectCount" resultType="java.lang.Integer" >
@@ -45,11 +50,13 @@
     insert into topic_post (id, title, content,
     user_id, topic_id,
     user_username, create_time,
-    last_time)
+    last_time,keywords,user_photo,
+    topic_tag,watch_number,last_watch_time)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
     #{userId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER},
     #{userUsername,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
-    #{lastTime,jdbcType=TIMESTAMP})
+    #{lastTime,jdbcType=TIMESTAMP}, #{keywords,jdbcType=VARCHAR}, #{userphoto,jdbcType=VARCHAR},
+    #{topictag,jdbcType=VARCHAR}, #{watchnumber,jdbcType=INTEGER}, #{lastwatchtime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateCommentsNumberByPrimaryKey" parameterType="Integer">
     UPDATE topic_post
@@ -71,11 +78,13 @@
     insert into topic_post (id, title, content, 
       user_id, topic_id, discard, 
       user_username, comments_number, create_time, 
-      last_time)
+      last_time,keywords,user_photo,
+      topic_tag,watch_number,last_watch_time)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{userId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{discard,jdbcType=INTEGER}, 
       #{userUsername,jdbcType=VARCHAR}, #{commentsNumber,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{lastTime,jdbcType=TIMESTAMP})
+      #{lastTime,jdbcType=TIMESTAMP}#{keywords,jdbcType=VARCHAR}, #{userphoto,jdbcType=VARCHAR},
+      #{topictag,jdbcType=VARCHAR}, #{watchnumber,jdbcType=INTEGER}, #{lastwatchtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.sang.topic.common.entity.Post" >
     insert into topic_post
@@ -110,6 +119,21 @@
       <if test="lastTime != null" >
         last_time,
       </if>
+      <if test="keywords != null" >
+        keywords,
+      </if>
+      <if test="userphoto != null" >
+        user_photo,
+      </if>
+      <if test="topictag != null" >
+        topic_tag,
+      </if>
+      <if test="watchnumber != null" >
+        watch_number,
+      </if>
+      <if test="lastwatchtime != null" >
+        last_watch_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -141,6 +165,21 @@
       </if>
       <if test="lastTime != null" >
         #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="keywords != null" >
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="userphoto != null" >
+        #{userphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="topictag != null" >
+        #{topictag,jdbcType=VARCHAR},
+      </if>
+      <if test="watchnumber != null" >
+        #{watchnumber,jdbcType=INTEGER},
+      </if>
+      <if test="lastwatchtime != null" >
+        #{lastwatchtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -174,6 +213,21 @@
       <if test="lastTime != null" >
         last_time = #{lastTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="keywords != null" >
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="userphoto != null" >
+        user_photo = #{userphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="topictag != null" >
+        topic_tag = #{topictag,jdbcType=VARCHAR},
+      </if>
+      <if test="watchnumber != null" >
+        watch_number = #{watchnumber,jdbcType=INTEGER},
+      </if>
+      <if test="lastwatchtime != null" >
+        last_watch_time = #{lastwatchtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -187,7 +241,12 @@
       user_username = #{userUsername,jdbcType=VARCHAR},
       comments_number = #{commentsNumber,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      last_time = #{lastTime,jdbcType=TIMESTAMP}
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      user_photo = #{userphoto,jdbcType=VARCHAR},
+      topic_tag = #{topictag,jdbcType=VARCHAR},
+      watch_number = #{watchnumber,jdbcType=INTEGER},
+      last_watch_time = #{lastwatchtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

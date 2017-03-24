@@ -18,6 +18,12 @@ public class Comments {
     private Integer discard;
 
     private String userUsername;
+    
+    private String userphoto;
+    
+    private Integer agree;
+    
+    private Integer disagree;
 
     //    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
     @TopicDateFormat
@@ -78,4 +84,30 @@ public class Comments {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+	public String getUserphoto() {
+		return userphoto;
+	}
+
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
+	}
+
+	public Integer getAgree() {
+		return agree;
+	}
+
+	public void setAgree(Integer agree) {
+		this.agree = agree;
+	}
+
+	public Integer getDisagree() {
+		return disagree;
+	}
+
+	public void setDisagree(Integer disagree) {
+		this.disagree = disagree;
+	}
+    
+    
 }

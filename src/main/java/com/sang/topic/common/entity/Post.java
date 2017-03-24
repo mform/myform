@@ -31,6 +31,20 @@ public class Post {
 
     @TopicDateFormat
     private Date lastTime;
+    
+    private String keywords;
+    
+    private String userphoto;
+    
+    private String topictag;
+    
+    private Integer watchnumber;
+    
+    @TopicDateFormat
+    private Date lastwatchtime;
+    
+    
+    
 
     public Integer getId() {
         return id;
@@ -111,8 +125,49 @@ public class Post {
     public void setLastTime(Date lastTime) {
         this.lastTime = lastTime;
     }
+    
 
-    @Override
+    public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
+	public String getUserphoto() {
+		return userphoto;
+	}
+
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
+	}
+
+	public String getTopictag() {
+		return topictag;
+	}
+
+	public void setTopictag(String topictag) {
+		this.topictag = topictag;
+	}
+
+	public Integer getWatchnumber() {
+		return watchnumber;
+	}
+
+	public void setWatchnumber(Integer watchnumber) {
+		this.watchnumber = watchnumber;
+	}
+
+	public Date getLastwatchtime() {
+		return lastwatchtime;
+	}
+
+	public void setLastwatchtime(Date lastwatchtime) {
+		this.lastwatchtime = lastwatchtime;
+	}
+
+	@Override
     public String toString() {
         ObjectMapper mapper = new ObjectMapper();
         try {
