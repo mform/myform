@@ -29,6 +29,16 @@ public class UserController {
     public ModelAndView login() {
         return new ModelAndView("user/login");
     }
+    
+    @RequestMapping(value = "/user/forget-pwd", method = RequestMethod.GET)
+    public ModelAndView forgetPassword() {
+        return new ModelAndView("user/forget-pwd");
+    }
+    @RequestMapping(value = "/user/waiting-email", method = RequestMethod.GET)
+    public ModelAndView waitingEmail() {
+    	
+        return new ModelAndView("user/waiting-email");
+    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpSession httpSession) {
@@ -43,7 +53,7 @@ public class UserController {
         modelAndView.addObject("user", new User());
         return modelAndView;
     }
-
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable Integer id, HttpServletResponse response)
             throws IOException {
@@ -70,7 +80,7 @@ public class UserController {
         User user = (User) session.getAttribute("sessionUser");
         return new ModelAndView("user/edit-password", "user", user);
     }
-
+    
     /**
      * 注册用户
      */

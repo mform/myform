@@ -29,14 +29,13 @@
                 <div class="col-sm-8">
                     <div class="checkbox">
                         <label><input type="checkbox" name="rememberPassword">记住密码</label>
-                        <a class="pwd_right">忘记密码</a>
+                        <a class="pwd_right" href ="<c:url value="/u/user/forget-pwd"/>">忘记密码</a>
                     </div>
                 </div>
             </div>
             <div id="formAlert" class="alert hidden" role="alert"></div>
             <div class="col-md-12">
                 <span class="col-md-7"></span>
-                 
                  <input class="btn btn-default" type="button" onclick="login()" value="登录"/>
             </div>
         </form>

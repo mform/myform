@@ -33,8 +33,7 @@
                         <a href="<c:url value="/u/${comment.userUsername}"/>">${comment.userUsername}</a>:
                         发表时间：<spring:eval expression="comment.createTime"/>
                         <pre>${comment.content}</pre>
-                         <i id="agree" class="fa fa-thumbs-o-up" title="点赞数">0赞  </i>
-                         <i id="disagree" class="fa fa-thumbs-o-down" title="反对数">0踩  </i>
+                         <i id="agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a>  </i>
                     </li>
                 </c:forEach>
             </ul>
@@ -59,12 +58,16 @@
 <jsp:include page="../common/footer.jsp"/>
 
 <script>
-
+     var flag=true;
      $('#agree').click(function(){
-    	 $('#agree').attr("class", "fa fa-thumbs-up");
-     });
-     $('#disagree').click(function(){
-    	 $('#disagree').attr("class", "fa fa-thumbs-down");
+    	 if(flag){
+    		 $('#agree').attr("class", "fa fa-heart");
+    		 flag=false;
+    	 }else{
+    		 $('#agree').attr("class", "fa fa-heart-o");
+    		 flag=true;
+    	 }
+    	 
      });
     function postComments() {
         myAjaxForm({
