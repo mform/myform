@@ -43,6 +43,11 @@ public class PostService {
     public Post get(Integer id) {
         return postMapper.selectByPrimaryKey(id);
     }
+    
+    
+    public void updatewatchNumberByPrimaryKey(Integer id) {
+         postMapper.updatewatchNumberByPrimaryKey(id);
+    }
 
     @Transactional
     public int insert(Post post) {

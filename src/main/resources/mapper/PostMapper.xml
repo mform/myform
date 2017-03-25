@@ -63,6 +63,12 @@
     SET comments_number = comments_number+1
     WHERE id = #{id}
   </update>
+  
+  <update id="updatewatchNumberByPrimaryKey" parameterType="Integer">
+    UPDATE topic_post
+    SET watch_number = watch_number+1
+    WHERE id = #{id}
+  </update>
   <!--  -->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

@@ -1,6 +1,5 @@
 package com.sang.topic.controller.web;
 
-import com.sang.topic.common.constants.MessageConstants;
 import com.sang.topic.common.entity.Post;
 import com.sang.topic.common.entity.Topic;
 import com.sang.topic.common.entity.User;
@@ -17,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,6 +63,9 @@ public class PostController {
         Post post = postService.get(id);
         if (post == null)
             return new ModelAndView("post/show");
+        post.setWatchnumber(post.getWatchnumber()+1);
+        postService.updatewatchNumberByPrimaryKey(id);
+        
         Map<String, Object> map = new HashMap<>();
         map.put("post", post);
         map.put("topics", topicService.getAll());
