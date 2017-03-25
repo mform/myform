@@ -53,10 +53,10 @@
                             <a href="<c:url value="/p/${post.id}"/>">${post.title}</a>
                         </div>
                         <div class="post-bottom">
-                            <i class="fa fa-eye" title="浏览数"></i>12
+                            <i class="fa fa-eye" title="浏览数"></i>${post.watchnumber }
                             <i class="fa fa-envelope" title="回复数"></i>${post.commentsNumber}
-                            <i class="fa fa-thumbs-up" title="点赞数"></i>3
-                            <i class="fa fa-thumbs-down" title="反对数"></i>3
+                            <i class="fa fa-thumbs-up" title="点赞数"></i>
+                            <i class="fa fa-thumbs-down" title="反对数"></i>
                         </div>
                         
 					   <%--  <div class="topic-img">

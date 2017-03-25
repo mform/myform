@@ -14,6 +14,8 @@ public interface PostMapper {
     int updateByPrimaryKeySelective(Post record);
 
     int updateByPrimaryKey(Post record);
+    
+    void updatewatchNumberByPrimaryKey(Integer id);
 
 
     int selectCount();
@@ -23,4 +25,6 @@ public interface PostMapper {
     int insertAndSelectID(Post record);
 
     int updateCommentsNumberByPrimaryKey(Integer id);
+    
+    
 }
