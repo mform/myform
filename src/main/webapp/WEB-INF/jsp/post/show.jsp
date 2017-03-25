@@ -86,7 +86,12 @@
     		 $('#content-agree').attr("class", "fa fa-heart-o");
     		 cflag=true;
     	 }
-    	
+    	 $.post("<c:url value="/p/like"/>",
+   			  {
+   			    flag:!cflag
+   			  },
+   			  function(data,status){
+   	   });
     	 
      });
      
