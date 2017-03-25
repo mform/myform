@@ -69,6 +69,12 @@
     		 $('#agree').attr("class", "fa fa-heart-o");
     		 flag=true;
     	 }
+    	 $.post("<c:url value="/c/like"/>",
+    			  {
+    			    flag:!flag
+    			  },
+    			  function(data,status){
+    	});
     	 
      });
      var cflag=true;
@@ -80,6 +86,7 @@
     		 $('#content-agree').attr("class", "fa fa-heart-o");
     		 cflag=true;
     	 }
+    	
     	 
      });
      
