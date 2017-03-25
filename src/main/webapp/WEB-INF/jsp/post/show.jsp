@@ -35,7 +35,10 @@
                         <a href="<c:url value="/u/${comment.userUsername}"/>">${comment.userUsername}</a>:
                         发表时间：<spring:eval expression="comment.createTime"/>
                         <pre>${comment.content}</pre>
-                         <i id="agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a>  </i>
+                         <i id="agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a> </i>
+                         <script>
+                            var cid=${comment.id};
+                         </script>
                     </li>
                 </c:forEach>
             </ul>
@@ -61,7 +64,28 @@
 
 <script>
 	
-
+(function topicLike(){
+	/* 帖子点赞数 */
+    var cflag=true;
+    $('#content-agree').click(function(){
+   	 if(cflag){
+   		 $('#content-agree').attr("class", "fa fa-heart");
+   		 cflag=false;
+   	 }else{
+   		 $('#content-agree').attr("class", "fa fa-heart-o");
+   		 cflag=true;
+   	 }
+   	 var id=${post.id};
+   	 $.post("<c:url value="/p/like"/>",
+  			  {
+  			    flag:!cflag,
+  			    id: id
+  			  },
+  			  function(data,status){
+  	   });
+   	 
+    });
+})();
 /* 回复点赞数 */
 $(".list-group>li>i").each(function(index){
 	 var flag=true;
@@ -73,7 +97,8 @@ $(".list-group>li>i").each(function(index){
     		 $(this).attr("class", "fa fa-heart-o");
     		 flag=true;
     	 }
-		 var id=${comment.id};
+		  var id=cid;
+		  console.log(id);
 		 $.post("<c:url value="/c/like"/>",
    			  {
    			    flag:!flag,
@@ -83,26 +108,7 @@ $(".list-group>li>i").each(function(index){
    			});
 	 });
 });    
-     /* 帖子点赞数 */
-     var cflag=true;
-     $('#content-agree').click(function(){
-    	 if(cflag){
-    		 $('#content-agree').attr("class", "fa fa-heart");
-    		 cflag=false;
-    	 }else{
-    		 $('#content-agree').attr("class", "fa fa-heart-o");
-    		 cflag=true;
-    	 }
-    	 var id=${post.id};
-    	 $.post("<c:url value="/p/like"/>",
-   			  {
-   			    flag:!cflag,
-   			    id: id
-   			  },
-   			  function(data,status){
-   	   });
-    	 
-     });
+     
      
     function postComments() {
         myAjaxForm({
