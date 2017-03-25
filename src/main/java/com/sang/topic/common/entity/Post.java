@@ -43,7 +43,7 @@ public class Post {
     @TopicDateFormat
     private Date lastwatchtime;
     
-    
+    private Integer agree;
     
 
     public Integer getId() {
@@ -165,6 +165,15 @@ public class Post {
 
 	public void setLastwatchtime(Date lastwatchtime) {
 		this.lastwatchtime = lastwatchtime;
+	}
+	
+	
+	public Integer getAgree() {
+		return agree;
+	}
+
+	public void setAgree(Integer agree) {
+		this.agree = agree;
 	}
 
 	@Override

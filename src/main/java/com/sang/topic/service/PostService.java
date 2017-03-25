@@ -48,6 +48,13 @@ public class PostService {
     public void updatewatchNumberByPrimaryKey(Integer id) {
          postMapper.updatewatchNumberByPrimaryKey(id);
     }
+    public void reduceAgree(Integer id) {
+    	postMapper.reduceAgree(id);
+    }
+    
+    public void addAgree(Integer id) {
+    	postMapper.addAgree(id);
+    }
 
     @Transactional
     public int insert(Post post) {

@@ -54,7 +54,14 @@ public class CommentsService {
     public int update(Comments comments) {
         return commentsMapper.updateByPrimaryKeySelective(comments);
     }
-
+    
+    public void reduceAgree(Integer id) {
+    	commentsMapper.reduceAgree(id);
+    }
+    
+    public void addAgree(Integer id) {
+    	commentsMapper.addAgree(id);
+    }
     /**
      * 发表评论
      * @param comments

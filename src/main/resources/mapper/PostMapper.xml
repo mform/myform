@@ -17,10 +17,11 @@
     <result column="topic_tag"  property="topictag"  jdbcType="VARCHAR" />
     <result column="watch_number"  property="watchnumber"  jdbcType="INTEGER" />
     <result column="last_watch_time"  property="lastwatchtime"  jdbcType="TIMESTAMP" />
+    <result column="agree"  property="agree"  jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, title, content, user_id, topic_id, discard, user_username, comments_number, create_time, 
-    last_time,keywords,user_photo,topic_tag,watch_number,last_watch_time
+    last_time,keywords,user_photo,topic_tag,watch_number,last_watch_time,agree
   </sql>
   <!--  -->
   <select id="selectCount" resultType="java.lang.Integer" >
@@ -51,12 +52,13 @@
     user_id, topic_id,
     user_username, create_time,
     last_time,keywords,user_photo,
-    topic_tag,watch_number,last_watch_time)
+    topic_tag,watch_number,last_watch_time,agree)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
     #{userId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER},
     #{userUsername,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
     #{lastTime,jdbcType=TIMESTAMP}, #{keywords,jdbcType=VARCHAR}, #{userphoto,jdbcType=VARCHAR},
-    #{topictag,jdbcType=VARCHAR}, #{watchnumber,jdbcType=INTEGER}, #{lastwatchtime,jdbcType=TIMESTAMP})
+    #{topictag,jdbcType=VARCHAR}, #{watchnumber,jdbcType=INTEGER}, #{lastwatchtime,jdbcType=TIMESTAMP},
+    #{agree,jdbcType=INTEGER})
   </insert>
   <update id="updateCommentsNumberByPrimaryKey" parameterType="Integer">
     UPDATE topic_post
@@ -67,6 +69,16 @@
   <update id="updatewatchNumberByPrimaryKey" parameterType="Integer">
     UPDATE topic_post
     SET watch_number = watch_number+1
+    WHERE id = #{id}
+  </update>
+  <update id="reduceAgree" parameterType="Integer">
+    UPDATE topic_post
+    SET agree = agree-1
+    WHERE id = #{id}
+  </update>
+  <update id="addAgree" parameterType="Integer">
+    UPDATE topic_post
+    SET agree = agree+1
     WHERE id = #{id}
   </update>
   <!--  -->
@@ -85,12 +97,13 @@
       user_id, topic_id, discard, 
       user_username, comments_number, create_time, 
       last_time,keywords,user_photo,
-      topic_tag,watch_number,last_watch_time)
+      topic_tag,watch_number,last_watch_time,agree)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{userId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{discard,jdbcType=INTEGER}, 
       #{userUsername,jdbcType=VARCHAR}, #{commentsNumber,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{lastTime,jdbcType=TIMESTAMP}#{keywords,jdbcType=VARCHAR}, #{userphoto,jdbcType=VARCHAR},
-      #{topictag,jdbcType=VARCHAR}, #{watchnumber,jdbcType=INTEGER}, #{lastwatchtime,jdbcType=TIMESTAMP})
+      #{topictag,jdbcType=VARCHAR}, #{watchnumber,jdbcType=INTEGER}, #{lastwatchtime,jdbcType=TIMESTAMP},
+      #{agree,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sang.topic.common.entity.Post" >
     insert into topic_post
@@ -140,6 +153,9 @@
       <if test="lastwatchtime != null" >
         last_watch_time,
       </if>
+      <if test="agree != null" >
+        agree,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -186,6 +202,9 @@
       </if>
       <if test="lastwatchtime != null" >
         #{lastwatchtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agree != null" >
+        #{agree,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -234,6 +253,9 @@
       <if test="lastwatchtime != null" >
         last_watch_time = #{lastwatchtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="agree != null" >
+        agree = #{agree,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -252,7 +274,8 @@
       user_photo = #{userphoto,jdbcType=VARCHAR},
       topic_tag = #{topictag,jdbcType=VARCHAR},
       watch_number = #{watchnumber,jdbcType=INTEGER},
-      last_watch_time = #{lastwatchtime,jdbcType=TIMESTAMP}
+      last_watch_time = #{lastwatchtime,jdbcType=TIMESTAMP},
+      agree = #{agree,jdbcType=INTEGER},
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

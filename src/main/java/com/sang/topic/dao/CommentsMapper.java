@@ -20,4 +20,8 @@ public interface CommentsMapper {
     List<Comments> selectByPostId(Integer topicId);
 
     int selectCount();
+    
+    void reduceAgree(Integer id);
+    
+    void addAgree(Integer id);
 }
