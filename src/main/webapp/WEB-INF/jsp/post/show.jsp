@@ -69,9 +69,11 @@
     		 $('#agree').attr("class", "fa fa-heart-o");
     		 flag=true;
     	 }
+    	 var id=${post.id};
     	 $.post("<c:url value="/c/like"/>",
     			  {
-    			    flag:!flag
+    			    flag:!flag,
+    			    id: id
     			  },
     			  function(data,status){
     	});

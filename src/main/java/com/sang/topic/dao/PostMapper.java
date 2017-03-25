@@ -26,5 +26,9 @@ public interface PostMapper {
 
     int updateCommentsNumberByPrimaryKey(Integer id);
     
+    void reduceAgree(Integer id);
+    
+    void addAgree(Integer id);
+    
     
 }

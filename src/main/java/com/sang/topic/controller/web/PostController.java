@@ -45,6 +45,8 @@ public class PostController {
         if(bindingResult.hasErrors())
             return ResponseUtil.failFieldValidation(bindingResult);
         User user = (User) httpSession.getAttribute("sessionUser");
+        post.setWatchnumber(0);
+        post.setAgree(0);
         return postService.create(post, user.getId());
     }
 
@@ -72,6 +74,15 @@ public class PostController {
         map.put("user", userService.get(post.getUserId()));
         map.put("comments", commentsService.getCommentsByPostId(id));
         return new ModelAndView("post/show", map);
+    }
+    
+    @RequestMapping(value = "/like", method = RequestMethod.POST)
+    public void setLikeNum(boolean flag ,int id) {
+       if(flag){
+    	   postService.addAgree(id);
+       }else{
+    	   postService.reduceAgree(id);
+       }
     }
 
 }

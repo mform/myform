@@ -31,6 +31,16 @@
         FROM topic_comments
         WHERE post_id=#{postId}
     </select>
+  <update id="reduceAgree" parameterType="Integer">
+   		UPDATE topic_comments
+    	SET agree = agree-1
+    	WHERE id = #{id}
+  </update>
+  <update id="addAgree" parameterType="Integer">
+  		UPDATE topic_comments
+    	SET agree = agree+1
+    	WHERE id = #{id}
+  </update>
     <!--  -->
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
