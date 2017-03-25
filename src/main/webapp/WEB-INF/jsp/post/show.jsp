@@ -20,9 +20,11 @@
                     创建时间：<spring:eval expression="post.createTime"/>
                     来自: <a href="<c:url value="/u/${user.username}"/>">${user.username}</a>
                 </span>
+                
                 </div>
                 <div class="panel-body">
                     <pre>${post.content}</pre>
+                    <i id="content-agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a>  </i>
                 </div>
             </div>
             <%-- 帖子评论列表 --%>
@@ -69,6 +71,18 @@
     	 }
     	 
      });
+     var cflag=true;
+     $('#content-agree').click(function(){
+    	 if(cflag){
+    		 $('#content-agree').attr("class", "fa fa-heart");
+    		 cflag=false;
+    	 }else{
+    		 $('#content-agree').attr("class", "fa fa-heart-o");
+    		 cflag=true;
+    	 }
+    	 
+     });
+     
     function postComments() {
         myAjaxForm({
             url: '<c:url value="/c"/>', callback: function () {
