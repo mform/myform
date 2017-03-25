@@ -60,23 +60,30 @@
 <jsp:include page="../common/footer.jsp"/>
 
 <script>
-     var flag=true;
-     $('#agree').click(function(){
-    	 if(flag){
-    		 $('#agree').attr("class", "fa fa-heart");
+	
+
+/* 回复点赞数 */
+$(".list-group>li>i").each(function(index){
+	 var flag=true;
+	 $(this).click(function(){
+		 if(flag){
+    		 $(this).attr("class", "fa fa-heart");
     		 flag=false;
     	 }else{
-    		 $('#agree').attr("class", "fa fa-heart-o");
+    		 $(this).attr("class", "fa fa-heart-o");
     		 flag=true;
     	 }
-    	 $.post("<c:url value="/c/like"/>",
-    			  {
-    			    flag:!flag
-    			  },
-    			  function(data,status){
-    	});
-    	 
-     });
+		 var id=${comment.id};
+		 $.post("<c:url value="/c/like"/>",
+   			  {
+   			    flag:!flag,
+   			    id:id
+   			  },
+   			  function(data,status){
+   			});
+	 });
+});    
+     /* 帖子点赞数 */
      var cflag=true;
      $('#content-agree').click(function(){
     	 if(cflag){
