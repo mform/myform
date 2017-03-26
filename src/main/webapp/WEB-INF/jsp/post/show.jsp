@@ -27,6 +27,7 @@
                     <i id="content-agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a>  </i>
                 </div>
             </div>
+            <script>var cid = new Array();</script>
             <%-- 帖子评论列表 --%>
             <ul class="list-group">
                 <c:forEach items="${comments}" varStatus="status" var="comment">
@@ -37,7 +38,9 @@
                         <pre>${comment.content}</pre>
                          <i id="agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a> </i>
                          <script>
-                            var cid=${comment.id};
+                
+                         var id=${comment.id}
+                          cid.push(id);
                          </script>
                     </li>
                 </c:forEach>
@@ -97,8 +100,7 @@ $(".list-group>li>i").each(function(index){
     		 $(this).attr("class", "fa fa-heart-o");
     		 flag=true;
     	 }
-		  var id=cid;
-		  console.log(id);
+		  var id=cid[index];
 		 $.post("<c:url value="/c/like"/>",
    			  {
    			    flag:!flag,
