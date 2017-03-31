@@ -29,6 +29,7 @@ public class UploadController {
             return userService.savePhoto(file, request.getSession());
         } catch (IOException e) {
             e.printStackTrace();
+
             return ResponseUtil.failValidation(MessageConstants.UPLOAD_FAIL);
         }
     }

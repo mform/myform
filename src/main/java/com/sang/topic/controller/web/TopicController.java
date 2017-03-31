@@ -35,7 +35,6 @@ public class TopicController {
         map.put("topics", topics);
         map.put("posts", posts);
         map.put("page", page);
-
         return new ModelAndView("topic/index", map);
 	}
 
