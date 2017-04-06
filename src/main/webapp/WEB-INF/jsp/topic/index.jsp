@@ -6,6 +6,7 @@
 <head>
     <title>Title</title>
 </head>
+
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="content">
@@ -34,7 +35,7 @@
 		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 		<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 	<!-- 全部帖子 -->
-        <div class="main-bar">
+        <div class="main-bar" >
             <jsp:include page="../common/nav.jsp"/>
             <div class="list-group">
                 <c:forEach items="${posts}" var="post">
@@ -73,5 +74,14 @@
     </div>
 </div>
 <jsp:include page="../common/footer.jsp"/>
+<script>
+
+if(window.name!="hasLoad"){    
+    location.reload();    
+    window.name = "hasLoad";    
+}else{    
+    window.name="";    
+}  
+</script>
 </body>
 </html>
