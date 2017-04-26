@@ -76,12 +76,12 @@
 <jsp:include page="../common/footer.jsp"/>
 <script>
 
-if(window.name!="hasLoad"){    
+/* if(window.name!="hasLoad"){    
     location.reload();    
     window.name = "hasLoad";    
 }else{    
     window.name="";    
-}  
+}   */
 </script>
 </body>
 </html>

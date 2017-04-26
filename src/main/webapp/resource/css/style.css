@@ -75,6 +75,7 @@ a:hover{
 .user-show-main{
     width: 80%;
     float: right;
+    padding-left: 10px;
 }
 .user-show-top{
     text-align: center;
@@ -216,3 +217,12 @@ a:hover{
 	text-align:center
 }
 /* END 话题分类导航栏 */
+.user-show-top p{
+	margin: 10px 10px 10px 150px;
+}
+.user-show-detail li{
+	margin-left: 150px;
+}
+.user-show-bottom a{
+	margin-left: 150px;
+}

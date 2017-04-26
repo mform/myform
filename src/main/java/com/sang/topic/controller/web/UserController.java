@@ -74,6 +74,16 @@ public class UserController {
         User user = (User) session.getAttribute("sessionUser");
         return new ModelAndView("user/edit-photo", "user", user);
     }
+    @RequestMapping(value = "/edit/msg", method = RequestMethod.GET)
+    public ModelAndView editMsg(HttpSession session) {
+        User user = (User) session.getAttribute("sessionUser");
+        return new ModelAndView("user/edit-msg", "user", user);
+    }
+    @RequestMapping(value = "/edit/topic", method = RequestMethod.GET)
+    public ModelAndView editTopic(HttpSession session) {
+        User user = (User) session.getAttribute("sessionUser");
+        return new ModelAndView("user/edit-topic", "user", user);
+    }
 
     @RequestMapping(value = "/edit/password", method = RequestMethod.GET)
     public ModelAndView editPassword(HttpSession session) {
