@@ -60,10 +60,6 @@
                             <i class="fa fa-heart" title="点赞数"></i>${post.agree}
 
                         </div>
-                        
-					   <%--  <div class="topic-img">
-					        <img src="<c:url value="/resource/image/screenshot/one.jpg"/>"/>
-					    </div> --%>
 					    
                     </li>
                 </c:forEach>

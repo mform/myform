@@ -11,9 +11,15 @@
 <jsp:include page="../common/header.jsp"/>
 <div class="content">
     <div class="edit-bar container">
-        <h2 style="text-align: center">邮箱重置密码</h2>
+        <h2 style="text-align: center">重置密码</h2>
         <br>
         <form  action="" method="get" class="form-horizontal">
+           <div class="form-group">
+                <label class="col-md-4 control-label">用户名</label>
+                <div class="col-md-4">
+                    <input name="username" type="text" class="form-control"/>
+                </div>
+            </div>
             <div class="form-group" id="email">
                 <label class="col-md-4 control-label">邮箱</label>
                 <div class="col-md-4">
