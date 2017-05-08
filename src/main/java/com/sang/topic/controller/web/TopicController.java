@@ -2,6 +2,7 @@ package com.sang.topic.controller.web;
 
 import com.sang.topic.common.entity.Post;
 import com.sang.topic.common.entity.Topic;
+import com.sang.topic.common.entity.User;
 import com.sang.topic.service.PostService;
 import com.sang.topic.service.TopicService;
 import com.sang.topic.common.model.Page;
@@ -53,5 +54,21 @@ public class TopicController {
         map.put("page", page);
         return new ModelAndView("topic/index", map);
     }
+	
+	@RequestMapping(value="/t/u")
+	public ModelAndView index_users(Integer p){
+        Page page = new Page();
+        if(p != null) page.setCurrentPage(p);
+        page.setUrl("/?p=");
+
+        List<User> users = topicService.selectOrderUsers();
+        List<Post> posts = postService.getByPage(page);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("topics", users);
+        map.put("posts", posts);
+        map.put("page", page);
+        return new ModelAndView("common/sidebar", map);
+	}
 
 }

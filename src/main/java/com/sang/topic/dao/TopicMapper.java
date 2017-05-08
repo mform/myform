@@ -1,6 +1,7 @@
 package com.sang.topic.dao;
 
 import com.sang.topic.common.entity.Topic;
+import com.sang.topic.common.entity.User;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface TopicMapper {
     List<Topic> selectAll();
 
     List<Topic> selectAllOpen();
+    
+    List<User> selectOrderUsers();
 }
