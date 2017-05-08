@@ -5,6 +5,7 @@ import com.sang.topic.common.entity.Topic;
 import com.sang.topic.common.entity.User;
 import com.sang.topic.service.PostService;
 import com.sang.topic.service.TopicService;
+import com.sang.topic.service.UserService;
 import com.sang.topic.common.model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,8 @@ public class TopicController {
     PostService postService;
     @Autowired
     private TopicService topicService;
+    @Autowired
+    private UserService userService;
 
 	@RequestMapping(value="/")
 	public ModelAndView index(Integer p){
@@ -30,10 +33,12 @@ public class TopicController {
         page.setUrl("/?p=");
 
         List<Topic> topics = topicService.selectAllOpen();
+        List<User> users = userService.selectOrderUsers();
         List<Post> posts = postService.getByPage(page);
 
         Map<String, Object> map = new HashMap<>();
         map.put("topics", topics);
+        map.put("users", users);
         map.put("posts", posts);
         map.put("page", page);
         return new ModelAndView("topic/index", map);
@@ -59,20 +64,4 @@ public class TopicController {
         return new ModelAndView("topic/index", map);
     }
 	
-	@RequestMapping(value="/t/u")
-	public ModelAndView index_users(Integer p){
-        Page page = new Page();
-        if(p != null) page.setCurrentPage(p);
-        page.setUrl("/?p=");
-
-        List<User> users = topicService.selectOrderUsers();
-        List<Post> posts = postService.getByPage(page);
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("users", users);
-        map.put("posts", posts);
-        map.put("page", page);
-        return new ModelAndView("common/sidebar", map);
-	}
-
 }

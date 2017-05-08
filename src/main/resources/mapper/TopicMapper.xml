@@ -19,24 +19,6 @@
         from topic_topic
         where close = 0
     </select>
-    <select id="selectOrderUsers" resultMap="BaseResultMap">
-       SELECT DISTINCT
-			u.*
-		FROM
-			topic_post AS p
-		INNER JOIN (
-			SELECT
-				SUM(agree) AS agree,
-				user_id
-			FROM
-				topic_post
-			GROUP BY
-				user_id
-		) AS a ON a.user_id = p.user_id
-		INNER JOIN topic_user AS u ON u.id = p.user_id
-		ORDER BY
-			a.agree DESC
-    </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>

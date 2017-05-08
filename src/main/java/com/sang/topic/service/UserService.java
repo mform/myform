@@ -47,6 +47,9 @@ public class UserService {
     public User get(int id) {
         return userMapper.selectByPrimaryKey(id);
     }
+    public List<User> selectOrderUsers() {
+        return userMapper.selectOrderUsers();
+    }
     public int getIDByUserName(String username) {
         return userMapper.selectIDByUserName(username);
     }

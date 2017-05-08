@@ -22,4 +22,6 @@ public interface UserMapper {
     List<User> selectByUsername(String username);
 
     List<User> selectByUsernameAndPassword(User record);
+    
+    List<User> selectOrderUsers();
 }
