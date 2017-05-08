@@ -65,7 +65,7 @@ public class TopicController {
         List<Post> posts = postService.getByPage(page);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("topics", users);
+        map.put("users", users);
         map.put("posts", posts);
         map.put("page", page);
         return new ModelAndView("common/sidebar", map);
