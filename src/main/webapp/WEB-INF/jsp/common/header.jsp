@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="<c:url value="/resource/module/bootstrap/css/bootstrap.min.css"/>"/>
-<link rel="stylesheet" href="<c:url value="/resource/css/style.css"/>"/>
 <link rel="stylesheet" href="<c:url value="/resource/module/button/css/buttons.css"/>"/>
 <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<c:url value="/resource/css/style.css"/>"/>
 <script src="<c:url value="/resource/module/jquery/jquery-1.12.3/jquery-1.12.3.min.js"/>"></script>
 <script src="<c:url value="/resource/module/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="<c:url value="/resource/module/jquery-cookie/jquery.cookie.js"/>"></script>
@@ -19,6 +19,13 @@
                 </button>
                 <a class="navbar-brand" href="<c:url value="/"/>">解惑</a>
             </div>
+		   <section class="webdesigntuts-workshop">
+			<form action="" method="">		    
+				<input type="search" placeholder="热门帖子">	
+				<a class="navbar-brand" href="<c:url value="/t/search"/>">搜索</a>
+			</form>
+
+		  </section>
 
             <%----%>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

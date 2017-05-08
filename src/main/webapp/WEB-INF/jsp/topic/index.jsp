@@ -43,7 +43,7 @@
                         
                         <div class="post-bottom clearfix" >
 	                        <div class="author-div">
-	                         <a class="author-head" href="<c:url value="/u/${post.userUsername}"/>"><img src="<c:url value="/resource/image/author.png"/>"></a>
+	                         <a class="author-head" href="<c:url value="/u/user/${post.userId}"/>"><img src="<c:url value="/resource/image/author.png"/>"></a>
 	                        </div>
 	                        <div class="author-content">
 	                        	<span>${post.userUsername}</span>

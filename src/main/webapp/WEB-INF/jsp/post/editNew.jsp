@@ -18,6 +18,8 @@
                 <input type="text" class="form-control" name="title">
                 <label class="control-label">文章内容</label>
                 <textarea name="content" id="" cols="" rows="10" class="form-control"></textarea>
+                 <label class="control-label">搜索关键字</label>
+                <input type="text" class="form-control" name="keywords">
                 <br>
                 <div id="formAlert" class="alert hidden" role="alert"></div>
                 <button type="button" class="btn btn-default" onclick="postNew()">发表</button>

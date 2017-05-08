@@ -38,7 +38,11 @@ public class TopicController {
         map.put("page", page);
         return new ModelAndView("topic/index", map);
 	}
-
+	@RequestMapping(value="/t/search")
+	public ModelAndView search() {
+        return new ModelAndView("topic/search");
+    }
+	
 	@RequestMapping(value="/t/{id}")
     public ModelAndView topic(@PathVariable Integer id, Integer p){
         Page page = new Page();

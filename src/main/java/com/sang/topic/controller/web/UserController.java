@@ -29,6 +29,18 @@ public class UserController {
     public ModelAndView login() {
         return new ModelAndView("user/login");
     }
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ModelAndView user(@PathVariable Integer id, HttpServletResponse response) {
+    	 User user = userService.get(id);
+         if (user == null)
+			try {
+				response.sendError(404);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        return new ModelAndView("user/user","user", user);
+    }
     
     @RequestMapping(value = "/user/forget-pwd", method = RequestMethod.GET)
     public ModelAndView forgetPassword() {
