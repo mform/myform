@@ -52,13 +52,13 @@ public class TopicController {
 	 * 搜索帖子接口
 	 * 
 	 */
-	@RequestMapping(value="/t/search")
-	public ModelAndView search(@PathVariable String ketwords,Integer p) {
+	@RequestMapping(value = "/t/search")
+	public ModelAndView search(@PathVariable String keywords,Integer p) {
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
 
-        List<Post> posts = postService.getByKeyWords(ketwords,page);
+        List<Post> posts = postService.getByKeyWords(keywords,page);
 
         Map<String, Object> map = new HashMap<>();
         map.put("posts", posts);

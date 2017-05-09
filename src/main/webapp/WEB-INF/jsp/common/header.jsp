@@ -20,12 +20,22 @@
                 <a class="navbar-brand" href="<c:url value="/"/>">解惑</a>
             </div>
 		   <section class="webdesigntuts-workshop">
-			<form action="" method="">		    
-				<input name="search" placeholder="热门帖子">	
+			<form action="" method="get">		    
+				<input name="keywords" placeholder="热门帖子">	
 				<button onclick="search()">搜索</button>
-				<%-- <a class="navbar-brand" href="<c:url value="/t/search"/>">搜索</a> --%>
+				<%--  <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
+				<script>
+				function search(){
+					console.log("search");
+					myAjaxForm({
+			            url: '<c:url value="/t/search"/>',
+			            callback: function () {
+			            	
+			            }
+			        })
+				}
+				</script>
 			</form>
-
 		  </section>
 
             <%----%>
