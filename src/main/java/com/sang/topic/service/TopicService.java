@@ -2,7 +2,6 @@ package com.sang.topic.service;
 
 import com.sang.topic.dao.TopicMapper;
 import com.sang.topic.common.entity.Topic;
-import com.sang.topic.common.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +20,6 @@ public class TopicService {
 
     public List<Topic> selectAllOpen() {
         return topicMapper.selectAllOpen();
-    }
-    public List<User> selectOrderUsers() {
-        return topicMapper.selectOrderUsers();
     }
 
     public Topic get(Integer id) {
