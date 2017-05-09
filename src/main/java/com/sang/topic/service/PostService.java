@@ -39,6 +39,14 @@ public class PostService {
             return session.selectList("selectPostByTopicAndPage", topicId, page.toRowBounds());
         }
     }
+    
+    public List<Post> getByKeyWords(String keywords, Page page) {
+        try (SqlSession session = MyBatisSession.getSession()) {
+            int rowNumber = session.getMapper(PostMapper.class).selectCountByKeyWords(keywords);
+            page.setRowNumber(rowNumber);
+            return session.selectList("selectPostByKeyWords", keywords, page.toRowBounds());
+        }
+    }
 
     public Post get(Integer id) {
         return postMapper.selectByPrimaryKey(id);

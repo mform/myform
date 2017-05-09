@@ -70,6 +70,8 @@ public class Page {
         return url;
     }
 
+    // RowBounds(offset, limit);
+    // offset起始行 // limit是当前页显示多少条数据
     public RowBounds toRowBounds(){
         RowBounds rowBounds = new RowBounds((currentPage-1)*pageSize, pageSize);
         return rowBounds;

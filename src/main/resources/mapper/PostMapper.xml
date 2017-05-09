@@ -33,6 +33,11 @@
     FROM topic_post
     WHERE topic_id = #{id}
   </select>
+  <select id="selectCountByKeyWords" resultType="java.lang.Integer" parameterType="String" >
+    SELECT COUNT(*)
+    FROM topic_post
+    WHERE keywords = #{keywords}
+  </select>
   <select id="selectPostByPage" resultMap="BaseResultMap" resultSetType="SCROLL_SENSITIVE"
           parameterType="com.sang.topic.common.entity.Post">
     SELECT *
@@ -44,6 +49,13 @@
     SELECT *
     FROM topic_post
     WHERE topic_id = #{topic_id}
+    ORDER BY last_time DESC
+  </select>
+  <select id="selectPostByKeyWords" resultMap="BaseResultMap" resultSetType="SCROLL_SENSITIVE"
+          parameterType="com.sang.topic.common.entity.Post">
+    SELECT *
+    FROM topic_post
+    WHERE keywords = #{keywords}
     ORDER BY last_time DESC
   </select>
   <insert id="insertAndSelectID" parameterType="com.sang.topic.common.entity.Post"

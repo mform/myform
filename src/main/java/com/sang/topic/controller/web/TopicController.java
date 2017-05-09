@@ -26,6 +26,10 @@ public class TopicController {
     @Autowired
     private UserService userService;
 
+    /*
+	 * 主页面更新接口(点击全部帖子时接口)
+	 * 
+	 */
 	@RequestMapping(value="/")
 	public ModelAndView index(Integer p){
         Page page = new Page();
@@ -43,11 +47,29 @@ public class TopicController {
         map.put("page", page);
         return new ModelAndView("topic/index", map);
 	}
+	
+	/*
+	 * 搜索帖子接口
+	 * 
+	 */
 	@RequestMapping(value="/t/search")
-	public ModelAndView search() {
-        return new ModelAndView("topic/search");
+	public ModelAndView search(@PathVariable String ketwords,Integer p) {
+        Page page = new Page();
+        if(p != null) page.setCurrentPage(p);
+        page.setUrl("/t/search?p=");
+
+        List<Post> posts = postService.getByKeyWords(ketwords,page);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("posts", posts);
+        map.put("page", page);
+        return new ModelAndView("topic/search",map);
     }
 	
+	/*
+	 * 点击其他几个话题接口
+	 * 
+	 */
 	@RequestMapping(value="/t/{id}")
     public ModelAndView topic(@PathVariable Integer id, Integer p){
         Page page = new Page();

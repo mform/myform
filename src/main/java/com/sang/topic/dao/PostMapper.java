@@ -23,6 +23,8 @@ public interface PostMapper {
     int selectCountByTopic(Integer id);
 
     int insertAndSelectID(Post record);
+    
+    int selectCountByKeyWords(String keywords);
 
     int updateCommentsNumberByPrimaryKey(Integer id);
     
