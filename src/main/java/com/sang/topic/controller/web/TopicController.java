@@ -17,8 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
 public class TopicController {
     @Autowired
@@ -55,14 +53,11 @@ public class TopicController {
 	 * 
 	 */
 	@RequestMapping(value = "/t/search")
-	public ModelAndView search(HttpServletRequest request,Integer p) {
-		String keywords= request.getParameter("keywords");
-//		String keywords= "1a";
+	public ModelAndView search(@PathVariable String keywords,Integer p) {
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
-        
-        
+
         List<Post> posts = postService.getByKeyWords(keywords,page);
 
         Map<String, Object> map = new HashMap<>();

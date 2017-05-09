@@ -20,12 +20,26 @@
                 <a class="navbar-brand" href="<c:url value="/"/>">解惑</a>
             </div>
 		   <section class="webdesigntuts-workshop">
-		   
-		   
+
 			<form action="" method="post">		    
-				<input type="text" name="keywords" placeholder="热门帖子">	
-				<a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a>
+				<input name="keywords" placeholder="热门帖子" id="keywords">	
+				<button onclick="search()">搜索</button>
+				 <%-- <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
 			</form>
+			<script>
+				function search(){
+					console.log("search");
+					$.ajax({
+				        type: "GET",
+				        url: '<c:url value="/t/search"/>',
+				        data: $("#keywords").val(),
+				        dataType: "text",
+				        success: function (data) {
+				        	console.log("data");
+				        }
+				    });
+				}
+				</script>
 		  </section>
 
             <%----%>
