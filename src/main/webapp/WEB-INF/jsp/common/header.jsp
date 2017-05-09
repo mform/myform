@@ -23,22 +23,22 @@
 			<form action="" method="post">		    
 				<input name="keywords" placeholder="热门帖子" id="keywords">	
 				<button onclick="search()">搜索</button>
-				<%--  <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
-				<script>
+				 <%-- <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
+			</form>
+			<script>
 				function search(){
 					console.log("search");
 					$.ajax({
-				        type: "get",
+				        type: "GET",
 				        url: '<c:url value="/t/search"/>',
-				        data: {keywords:$("#keywords").val()},
-				        dataType: "json",
+				        data: $("#keywords").val(),
+				        dataType: "text",
 				        success: function (data) {
 				        	console.log("data");
 				        }
 				    });
 				}
 				</script>
-			</form>
 		  </section>
 
             <%----%>

@@ -26,6 +26,12 @@
                     <input name="email" type="email" class="form-control"/>
                 </div>
             </div>
+            <div class="form-group" id="pwd">
+                <label class="col-md-4 control-label">更改密码</label>
+                <div class="col-md-4">
+                    <input name="password" type="password" class="form-control"/>
+                </div>
+            </div>
             <div id="formAlert" class="alert hidden" role="alert"></div>
             <div class="col-md-12">
                 <span class="col-md-7"></span>
