@@ -1,9 +1,12 @@
 package com.sang.topic.controller.web;
 
+import com.sang.topic.common.entity.Post;
 import com.sang.topic.common.entity.User;
 import com.sang.topic.common.constants.MessageConstants;
+import com.sang.topic.service.PostService;
 import com.sang.topic.service.UserService;
 import com.sang.topic.util.SecurityUtil;
+import com.sang.topic.common.model.Page;
 import com.sang.topic.common.model.ValidationResponse;
 import com.sang.topic.util.ResponseUtil;
 import org.apache.log4j.Logger;
@@ -16,11 +19,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/u")
 //@SessionAttributes(names = "sessionUser")
 public class UserController {
+	@Autowired
+    PostService postService;
     @Autowired
     private UserService userService;
     Logger logger = Logger.getLogger(UserController.class);
@@ -92,8 +100,19 @@ public class UserController {
         return new ModelAndView("user/edit-msg", "user", user);
     }
     @RequestMapping(value = "/edit/topic", method = RequestMethod.GET)
-    public ModelAndView editTopic(HttpSession session) {
+    public ModelAndView editTopic(HttpSession session,Integer p) {
         User user = (User) session.getAttribute("sessionUser");
+        int id=user.getId();
+        Page page = new Page();
+        if(p != null) page.setCurrentPage(p);
+        page.setUrl("/edit/topic?p=");
+        
+        
+        List<Post> posts = postService.getByUserId(id,page);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("posts", posts);
+        map.put("page", page);
         return new ModelAndView("user/edit-topic", "user", user);
     }
 

@@ -47,6 +47,14 @@ public class PostService {
             return session.selectList("selectPostByKeyWords", keywords, page.toRowBounds());
         }
     }
+    
+    public List<Post> getByUserId(Integer UserId, Page page) {
+        try (SqlSession session = MyBatisSession.getSession()) {
+            int rowNumber = session.getMapper(PostMapper.class).selectCountByUserId(UserId);
+            page.setRowNumber(rowNumber);
+            return session.selectList("selectPostUserId", UserId, page.toRowBounds());
+        }
+    }
 
     public Post get(Integer id) {
         return postMapper.selectByPrimaryKey(id);

@@ -21,6 +21,7 @@ public interface PostMapper {
     int selectCount();
 
     int selectCountByTopic(Integer id);
+    int selectCountByUserId(Integer id);
 
     int insertAndSelectID(Post record);
     
