@@ -20,19 +20,22 @@
                 <a class="navbar-brand" href="<c:url value="/"/>">解惑</a>
             </div>
 		   <section class="webdesigntuts-workshop">
-			<form action="" method="get">		    
-				<input name="keywords" placeholder="热门帖子">	
+			<form action="" method="post">		    
+				<input name="keywords" placeholder="热门帖子" id="keywords">	
 				<button onclick="search()">搜索</button>
 				<%--  <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
 				<script>
 				function search(){
 					console.log("search");
-					myAjaxForm({
-			            url: '<c:url value="/t/search"/>',
-			            callback: function () {
-			            	
-			            }
-			        })
+					$.ajax({
+				        type: "get",
+				        url: '<c:url value="/t/search"/>',
+				        data: {keywords:$("#keywords").val()},
+				        dataType: "json",
+				        success: function (data) {
+				        	console.log("data");
+				        }
+				    });
 				}
 				</script>
 			</form>
