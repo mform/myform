@@ -27,18 +27,18 @@
 	                         <a class="author-head" href="#"><img src="<c:url value="/resource/image/author.png"/>"></a>
 	                        </div>
 	                        <div class="author-content">
-	                        	<span>post.userUsername</span>
+	                        	<span>huihui</span>
 	                            <%-- <spring:eval expression="post.createTime"/> --%>
 	                        </div>       
                         </div>
                         <div class="post-top ">
-                            <a href="<c:url value="#"/>">post.title</a>
+                            <a href="<c:url value="#"/>">云南大理</a>
                         </div>
                         <div class="post-bottom">
-                            <i class="fa fa-eye" title="浏览数"></i>post.watchnumber 
-                            <i class="fa fa-envelope" title="回复数"></i>post.commentsNumber
+                            <i class="fa fa-eye" title="浏览数"></i>12 
+                            <i class="fa fa-envelope" title="回复数"></i>1
 
-                            <i class="fa fa-heart" title="点赞数"></i>post.agree
+                            <i class="fa fa-heart" title="点赞数"></i>12
 
                         </div>
 					    

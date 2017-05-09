@@ -334,7 +334,7 @@ a:hover{
 	color: #efe;
 }
 
-.webdesigntuts-workshop a {
+.webdesigntuts-workshop button {
 	background: #222;
 	background: -webkit-linear-gradient(#333, #222);
 	background: -moz-linear-gradient(#333, #222);
@@ -365,8 +365,8 @@ a:hover{
 	width: 80px;
 }	
 
-.webdesigntuts-workshop a:hover,
-.webdesigntuts-workshop a:focus {
+.webdesigntuts-workshop button:hover,
+.webdesigntuts-workshop button:focus {
 	background: #292929;
 	background: -webkit-linear-gradient(#393939, #292929);	
 	background: -moz-linear-gradient(#393939, #292929);	
@@ -377,7 +377,7 @@ a:hover{
 	outline: none;
 }
 
-.webdesigntuts-workshop a:active {
+.webdesigntuts-workshop button:active {
 	background: #292929;
 	background: -webkit-linear-gradient(#393939, #292929);
 	background: -moz-linear-gradient(#393939, #292929);

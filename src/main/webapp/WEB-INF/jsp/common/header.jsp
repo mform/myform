@@ -21,8 +21,9 @@
             </div>
 		   <section class="webdesigntuts-workshop">
 			<form action="" method="">		    
-				<input type="search" placeholder="热门帖子">	
-				<a class="navbar-brand" href="<c:url value="/t/search"/>">搜索</a>
+				<input name="search" placeholder="热门帖子">	
+				<button onclick="search()">搜索</button>
+				<%-- <a class="navbar-brand" href="<c:url value="/t/search"/>">搜索</a> --%>
 			</form>
 
 		  </section>
