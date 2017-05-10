@@ -20,13 +20,6 @@
                 </div>
                 <form id="ajaxForm" action="<c:url value="/upload/photo"/>" method="post" class="form-horizontal" enctype="multipart/form-data">
              		 <input type="hidden" name="_method" value="put">
-                    <input type="hidden" name="id" value="${user.id}">
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">用户名</label>
-                        <div class="col-md-6">
-                            <input name="" type="text" class="form-control" disabled value="${user.username}"/>
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <img class="user-show-img" src="<c:url value="/resource/upload/photo/${user.photo}"/>"
                              alt=""/>

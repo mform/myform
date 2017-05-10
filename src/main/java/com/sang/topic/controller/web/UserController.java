@@ -103,6 +103,7 @@ public class UserController {
     public ModelAndView editTopic(HttpSession session,Integer p) {
         User user = (User) session.getAttribute("sessionUser");
         int id=user.getId();
+        System.out.println("aaaaaaaaaaaa:"+id);
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/edit/topic?p=");

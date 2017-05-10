@@ -21,28 +21,30 @@
             <div class="user-show-main">
              
              <div class="list-group">
+              <c:forEach items="${posts}" var="post">
                     <li class="list-group-item">
                         <div class="post-bottom clearfix" >
 	                        <div class="author-div">
 	                         <a class="author-head" href="#"><img src="<c:url value="/resource/image/author.png"/>"></a>
 	                        </div>
 	                        <div class="author-content">
-	                        	<span>huihui</span>
+	                        	<span>${post.userUsername}</span>
 	                            <%-- <spring:eval expression="post.createTime"/> --%>
 	                        </div>       
                         </div>
                         <div class="post-top ">
-                            <a href="<c:url value="#"/>">云南大理</a>
+                            <a href="<c:url value="#"/>">${post.title}</a>
                         </div>
                         <div class="post-bottom">
-                            <i class="fa fa-eye" title="浏览数"></i>12 
-                            <i class="fa fa-envelope" title="回复数"></i>1
+                            <i class="fa fa-eye" title="浏览数"></i>${post.watchnumber }
+                            <i class="fa fa-envelope" title="回复数"></i>${post.commentsNumber}
 
-                            <i class="fa fa-heart" title="点赞数"></i>12
+                            <i class="fa fa-heart" title="点赞数"></i>${post.agree}
 
                         </div>
 					    
                     </li>
+                </c:forEach>
             </div>
             <jsp:include page="../common/page.jsp"/>
             </div>
