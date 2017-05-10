@@ -10,6 +10,7 @@ import com.sang.topic.common.model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,7 +58,7 @@ public class TopicController {
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
-
+        System.out.println("!!!!!!!!!!!!");
 //        List<Post> posts = postService.getByKeyWords(keywords,page);
 
         Map<String, Object> map = new HashMap<>();

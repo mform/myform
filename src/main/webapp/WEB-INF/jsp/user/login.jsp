@@ -69,6 +69,7 @@
         });
     	function myAjaxForm(parameters) {
     	    var url = parameters.url;
+    	    console.log(url);
     	    var params = parameters.params;
     	    var $formAlert = parameters.$formAlert;
     	    var callback = parameters.callback;
