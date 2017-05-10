@@ -25,6 +25,7 @@ public class Post {
     private String userUsername;
 
     private Integer commentsNumber;
+    private String photo;
 
     @TopicDateFormat
     private Date createTime;
@@ -186,4 +187,12 @@ public class Post {
         }
         return "";
     }
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 }
