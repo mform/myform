@@ -114,7 +114,7 @@ public class UserController {
         Map<String, Object> map = new HashMap<>();
         map.put("posts", posts);
         map.put("page", page);
-        return new ModelAndView("user/edit-topic", "user", user);
+        return new ModelAndView("user/edit-topic", map);
     }
 
     @RequestMapping(value = "/edit/password", method = RequestMethod.GET)
