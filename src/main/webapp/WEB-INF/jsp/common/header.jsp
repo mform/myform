@@ -21,32 +21,25 @@
             </div>
 		   <section class="webdesigntuts-workshop">
 
-			<form action="" method="get">		    
+			<form action="" method="">		    
 				<input name="keywords" placeholder="热门帖子" id="keywords">	
 				<button onclick="search()" type="button" >搜索</button>
 				 <%-- <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
 			</form>
 			<script>
 				function search(){
-					console.log("search");
+					var daa=$("#keywords").val();
 					var url ='<c:url value="/t/search"/>';
-					console.log(url);
 					$.ajax({
-				        type: "get",
-				        url: url,
-				        data: $("#keywords").val(),
-				        dataType: "text",
+				        type: "POST",
+				        url: "/topic/t/search",
+				        dataType: 'text',
+				        contentType:'application/json',
+				        data: daa,
 				        success: function (data) {
-				        	console.log("data");
 				        	window.location.href =url;
 				        }
 				    });
-				 /*    myAjaxForm({
-			            url: '<c:url value="/t/search"/>',
-			            callback: function () {
-			               location.reload();
-			            }
-			        }); */
 				}
 			</script>
 		  </section>

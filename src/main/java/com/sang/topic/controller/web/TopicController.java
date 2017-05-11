@@ -9,8 +9,10 @@ import com.sang.topic.service.UserService;
 import com.sang.topic.common.model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,16 +55,15 @@ public class TopicController {
 	 * 搜索帖子接口
 	 * 
 	 */
-	@RequestMapping(value = "/t/search")
-	public ModelAndView search(Integer p) {
+	@RequestMapping(value = "/t/search",consumes="application/json")
+	@ResponseBody
+	public ModelAndView search(@RequestBody String keywords,Integer p) {
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
-        System.out.println("!!!!!!!!!!!!");
-//        List<Post> posts = postService.getByKeyWords(keywords,page);
-
+        List<Post> posts = postService.getByKeyWords(keywords,page);
         Map<String, Object> map = new HashMap<>();
-//        map.put("posts", posts);
+        //map.put("posts", posts);
         map.put("page", page);
         return new ModelAndView("topic/search",map);
     }
