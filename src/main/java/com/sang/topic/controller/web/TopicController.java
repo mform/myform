@@ -53,15 +53,15 @@ public class TopicController {
 	 * 
 	 */
 	@RequestMapping(value = "/t/search")
-	public ModelAndView search(@PathVariable String keywords,Integer p) {
+	public ModelAndView search(Integer p) {
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
 
-        List<Post> posts = postService.getByKeyWords(keywords,page);
+//        List<Post> posts = postService.getByKeyWords(keywords,page);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("posts", posts);
+//        map.put("posts", posts);
         map.put("page", page);
         return new ModelAndView("topic/search",map);
     }
