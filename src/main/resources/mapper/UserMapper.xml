@@ -55,6 +55,7 @@
 				user_id
 		) AS a ON a.user_id = p.user_id
 		INNER JOIN topic_user AS u ON u.id = p.user_id
+		AND u.id !=1
 		ORDER BY
 			a.agree DESC
 		LIMIT 6
