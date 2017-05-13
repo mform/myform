@@ -63,7 +63,7 @@ public class TopicController {
         page.setUrl("/t/search?p=");
         List<Post> posts = postService.getByKeyWords(keywords,page);
         Map<String, Object> map = new HashMap<>();
-        //map.put("posts", posts);
+        map.put("posts", posts);
         map.put("page", page);
         return new ModelAndView("topic/search",map);
     }
