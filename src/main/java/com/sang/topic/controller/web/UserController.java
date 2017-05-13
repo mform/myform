@@ -200,19 +200,21 @@ public class UserController {
         return ResponseUtil.failValidation(MessageConstants.USER_LOGIN_REQUIRE);
     }
     
-    @RequestMapping(value="/sendmail",method=RequestMethod.GET)
-    public void sendMiail(HttpSession session,String emailvalue,HttpServletRequest request){
-    	System.out.println(request.getParameter("emailvalue"));
-    	System.out.println(emailvalue);
+    @RequestMapping(value="/sendmail")
+    @ResponseBody
+    public String sendMiail(@RequestBody String emailvalue,HttpSession session){
     	String host="smtp.163.com";
 		String form="18970987553@163.com";
 		String subject="注册账号";
 		String randomCode=RandomChar.getRandomALLChar(4);
+		session.removeAttribute("randomCode");
 		session.setAttribute("randomCode", randomCode);
+		session.setMaxInactiveInterval(30);
 		String body="您的验证码为；"+randomCode;
 		String username="18970987553@163.com";
 		String password="wzt3050317";
     	JavaMailUtil.sendEmail(host, form, emailvalue, subject, body, username, password);
+    	return randomCode;
     }
     
     

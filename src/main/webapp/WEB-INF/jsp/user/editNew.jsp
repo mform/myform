@@ -43,11 +43,11 @@
 				<div class="form-group" id="radomCode">
 					<label class="col-md-4 control-label">验证码</label>
 					<div class="col-md-4">
-						<input id="radomCode" name="radomCode" class="form-control">
+						<input id="radomCode"  class="form-control">
 					</div>
 					<div class="col-md-4">
 						<input class="btn btn-default" type="button"
-							id="sendmail" value="发送验证码" />
+							id="sendmail"  value="发送验证码" />
 					</div>
 				</div>
 				<div id="formAlert" class="alert hidden" role="alert"></div>
@@ -60,12 +60,34 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 	<script>
+	    var randomCode=null;
+	    var form_randomCode=null;
+	    $("#user-add").bind("submit", function(){
+	       console.log(randomCode);
+	       form_randomCode=$("#radomCode").val();
+	       console.log(form_randomCode);
+	    });
 		$(document).ready(dataBind("user-add", '${formUrl}', function() {
+			alert(222);
 			window.location.href = '<c:url value="/"/>';
 		}));
 		
 		$("#sendmail").click(function(){
-			window.location.href = '<c:url value="/u/sendmail"/>';
+			var daa=$("#emailvalue").val();
+			form_randomCode=$("#radomCode").val();
+			var url ='<c:url value="/u/sendmail"/>';
+			$.ajax({
+		        type: "post",
+		        url: "/topic/u/sendmail",
+		        dataType: 'text',
+		        contentType: "application/json; charset=utf-8",
+		        data: daa,
+		        success: function (data) {
+		        	alert("发送成功");
+		        	randomCode=data;
+		        	
+		        }
+		    });
 		})
 	</script>
 </body>
