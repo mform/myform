@@ -8,6 +8,8 @@ import com.sang.topic.service.UserService;
 import com.sang.topic.util.SecurityUtil;
 import com.sang.topic.common.model.Page;
 import com.sang.topic.common.model.ValidationResponse;
+import com.sang.topic.util.JavaMailUtil;
+import com.sang.topic.util.RandomChar;
 import com.sang.topic.util.ResponseUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -196,4 +199,22 @@ public class UserController {
     public ValidationResponse loginMessage() {
         return ResponseUtil.failValidation(MessageConstants.USER_LOGIN_REQUIRE);
     }
+    
+    @RequestMapping(value="/sendmail",method=RequestMethod.GET)
+    public void sendMiail(HttpSession session,String emailvalue,HttpServletRequest request){
+    	System.out.println(request.getParameter("emailvalue"));
+    	System.out.println(emailvalue);
+    	String host="smtp.163.com";
+		String form="18970987553@163.com";
+		String subject="注册账号";
+		String randomCode=RandomChar.getRandomALLChar(4);
+		session.setAttribute("randomCode", randomCode);
+		String body="您的验证码为；"+randomCode;
+		String username="18970987553@163.com";
+		String password="wzt3050317";
+    	JavaMailUtil.sendEmail(host, form, emailvalue, subject, body, username, password);
+    }
+    
+    
 }
+

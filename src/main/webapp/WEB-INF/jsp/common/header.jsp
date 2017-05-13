@@ -37,6 +37,7 @@
 				        contentType:'application/json',
 				        data: daa,
 				        success: function (data) {
+				        	alert("111");
 				        	window.location.href =url;
 				        }
 				    });
