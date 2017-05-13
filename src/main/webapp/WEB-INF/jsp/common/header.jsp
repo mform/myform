@@ -21,20 +21,20 @@
             </div>
 		   <section class="webdesigntuts-workshop">
 
-			<form action="" method="">		    
-				<input name="keywords" placeholder="热门帖子" id="keywords">	
-				<button onclick="search()" type="button" >搜索</button>
-				 <%-- <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
+			<form action="/topic/t/search" method="post" id="fileForm">		    
+				<input name="keywords" placeholder="热门帖子" id="keywords">
+				 <input type="submit" value="搜索"/>
+			<!-- 	<button onclick="search()" type="button" >搜索</button> --> 
 			</form>
-			<script>
+			<!-- <script>
 				function search(){
+					//document.getElementById('fileForm').submit();
 					var daa=$("#keywords").val();
 					var url ='<c:url value="/t/search"/>';
 					$.ajax({
-				        type: "POST",
+				        type: "get",
 				        url: "/topic/t/search",
 				        dataType: 'text',
-				        contentType:'application/json',
 				        data: daa,
 				        success: function (data) {
 				        	alert("111");
@@ -42,7 +42,7 @@
 				        }
 				    });
 				}
-			</script>
+			</script> -->
 		  </section>
 
             <%----%>
