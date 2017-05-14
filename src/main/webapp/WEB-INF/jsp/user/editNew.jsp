@@ -15,7 +15,7 @@
 			<h2 style="text-align: center">用户注册</h2>
 			<br>
 			<spring:url value="/u" var="formUrl" />
-			<form:form modelAttribute="user" id="user-add"
+			<form:form modelAttribute="user" id="user-add" name="myform"
 				class="form-horizontal">
 				<div class="form-group" id="username">
 					<label class="col-md-4 control-label">用户名</label>
@@ -43,7 +43,7 @@
 				<div class="form-group" id="radomCode">
 					<label class="col-md-4 control-label">验证码</label>
 					<div class="col-md-4">
-						<input id="radomCode"  class="form-control">
+						<input id="radomCode" name="radomCode" class="form-control">
 					</div>
 					<div class="col-md-4">
 						<input class="btn btn-default" type="button"
@@ -65,7 +65,7 @@
 	    $("#user-add").bind("submit", function(){
 	       console.log(randomCode);
 	       form_randomCode=$("#radomCode").val();
-	       console.log(form_randomCode);
+	       console.log("add"+form_randomCode);
 	    });
 		$(document).ready(dataBind("user-add", '${formUrl}', function() {
 			alert(222);
@@ -73,8 +73,10 @@
 		}));
 		
 		$("#sendmail").click(function(){
+			console.log("aaa"+myform.radomCode.value);
 			var daa=$("#emailvalue").val();
 			form_randomCode=$("#radomCode").val();
+			console.log("value"+form_randomCode);
 			var url ='<c:url value="/u/sendmail"/>';
 			$.ajax({
 		        type: "post",
@@ -84,6 +86,7 @@
 		        data: daa,
 		        success: function (data) {
 		        	alert("发送成功");
+		 	       
 		        	randomCode=data;
 		        	
 		        }
