@@ -21,6 +21,7 @@
             </div>
 		   <section class="webdesigntuts-workshop">
 
+
 			<form action="<c:url value="/t/search"/>" method="">		    
 				<input name="keywords" placeholder="热门帖子" id="keywords">	
 				<button onclick="search()" type="submit" >搜索</button>
@@ -29,13 +30,13 @@
 			</form>
 			<!-- <script>
 				function search(){
+					//document.getElementById('fileForm').submit();
 					var daa=$("#keywords").val();
 					var url ='<c:url value="/t/search"/>';
 					$.ajax({
-				        type: "POST",
+				        type: "get",
 				        url: "/topic/t/search",
 				        dataType: 'text',
-				        contentType:'application/json',
 				        data: daa,
 				        success: function (data) {
 				        	alert("111");

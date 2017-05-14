@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class TopicController {
     @Autowired
@@ -55,9 +57,8 @@ public class TopicController {
 	 * 搜索帖子接口
 	 * 
 	 */
-	@RequestMapping(value = "/t/search",consumes="application/json")
-	@ResponseBody
-	public ModelAndView search(@RequestBody String keywords,Integer p) {
+	@RequestMapping(value = "/t/search")
+	public ModelAndView search(String keywords,Integer p) {
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
