@@ -10,7 +10,7 @@
                         
                         <div class="post-bottom clearfix" >
 	                        <div class="author-photo">
-	                         <a class="author-head" href="<c:url value="/u/edit/topic/${user.id}"/>"><img src="<c:url value="/resource/upload/photo/${user.photo}"/>"></a>
+	                         <a class="author-head" href="<c:url value="/u/user/${user.id}"/>"><img src="<c:url value="/resource/upload/photo/${user.photo}"/>"></a>
 	                        </div>
 	                        <div class="author-content">
 	                        	<span>${user.username}</span>

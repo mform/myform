@@ -25,11 +25,11 @@
                     <li class="list-group-item">
                         <div class="post-bottom clearfix" >
 	                        <div class="author-photo">
-	                         <a class="author-head" href="#"><img src="<c:url value="/resource/upload/photo/${user.photo}"/>"></a>
+	                         <a class="author-head" href="#">${post.userUsername}</a>
 	                        </div>
 	                        <div class="author-content">
-	                        	<span>${post.userUsername}</span>
-	                            <%-- <spring:eval expression="post.createTime"/> --%>
+	                        	<%-- <span>${post.userUsername}</span> --%>
+	                            <spring:eval expression="post.createTime"/>
 	                        </div>       
                         </div>
                         <div class="post-top ">

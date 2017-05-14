@@ -40,6 +40,7 @@ public class UserController {
     public ModelAndView login() {
         return new ModelAndView("user/login");
     }
+    
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ModelAndView user(@PathVariable Integer id, Integer p) {
          Page page = new Page();
@@ -104,14 +105,14 @@ public class UserController {
         User user = (User) session.getAttribute("sessionUser");
         return new ModelAndView("user/edit-msg", "user", user);
     }
-    @RequestMapping(value = "/edit/topic/{id}", method = RequestMethod.GET)
-    public ModelAndView editTopic(@PathVariable Integer id,Integer p) {
-       /* User user = (User) session.getAttribute("sessionUser");
+    @RequestMapping(value = "/edit/topic", method = RequestMethod.GET)
+    public ModelAndView editTopic(HttpSession session,Integer p) {
+        User user = (User) session.getAttribute("sessionUser");
         int id=user.getId();
-        System.out.println("aaaaaaaaaaaa:"+id);*/
+        System.out.println("aaaaaaaaaaaa:"+id);
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
-        page.setUrl("/edit/topic/"+id+"?p=");
+        page.setUrl("/edit/topic?p=");
         
         
         List<Post> posts = postService.getByUserId(id,page);
@@ -139,10 +140,7 @@ public class UserController {
         ValidationResponse res = userService.create(user);
         if (res.success()) {
             User u = userService.getByUsername(user.getUsername());
-            int id = user.getId();
-            System.out.println("!!!!!!!!!!!!!"+id);
             httpSession.setAttribute("sessionUser", u);
-            httpSession.setAttribute("sessionId", id);
         }
         return res;
     }
