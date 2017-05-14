@@ -41,16 +41,18 @@ public class UserController {
         return new ModelAndView("user/login");
     }
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ModelAndView user(@PathVariable Integer id, HttpServletResponse response) {
-    	 User user = userService.get(id);
-         if (user == null)
-			try {
-				response.sendError(404);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        return new ModelAndView("user/user","user", user);
+    public ModelAndView user(@PathVariable Integer id, Integer p) {
+         Page page = new Page();
+         if(p != null) page.setCurrentPage(p);
+         page.setUrl("/user/"+id+"?p=");
+         
+         
+         List<Post> posts = postService.getByUserId(id,page);
+
+         Map<String, Object> map = new HashMap<>();
+         map.put("posts", posts);
+         map.put("page", page);
+        return new ModelAndView("user/user",map);
     }
     
     @RequestMapping(value = "/user/forget-pwd", method = RequestMethod.GET)
@@ -102,14 +104,14 @@ public class UserController {
         User user = (User) session.getAttribute("sessionUser");
         return new ModelAndView("user/edit-msg", "user", user);
     }
-    @RequestMapping(value = "/edit/topic", method = RequestMethod.GET)
-    public ModelAndView editTopic(HttpSession session,Integer p) {
-        User user = (User) session.getAttribute("sessionUser");
+    @RequestMapping(value = "/edit/topic/{id}", method = RequestMethod.GET)
+    public ModelAndView editTopic(@PathVariable Integer id,Integer p) {
+       /* User user = (User) session.getAttribute("sessionUser");
         int id=user.getId();
-        System.out.println("aaaaaaaaaaaa:"+id);
+        System.out.println("aaaaaaaaaaaa:"+id);*/
         Page page = new Page();
         if(p != null) page.setCurrentPage(p);
-        page.setUrl("/edit/topic?p=");
+        page.setUrl("/edit/topic/"+id+"?p=");
         
         
         List<Post> posts = postService.getByUserId(id,page);
@@ -137,7 +139,10 @@ public class UserController {
         ValidationResponse res = userService.create(user);
         if (res.success()) {
             User u = userService.getByUsername(user.getUsername());
+            int id = user.getId();
+            System.out.println("!!!!!!!!!!!!!"+id);
             httpSession.setAttribute("sessionUser", u);
+            httpSession.setAttribute("sessionId", id);
         }
         return res;
     }
@@ -149,8 +154,10 @@ public class UserController {
     public ValidationResponse valid(String username, String password, HttpSession httpSession) {
         User u = userService.getByUsernameAndPassword(username, SecurityUtil.MD5(password));
         int userId=userService.getIDByUserName(username);
+        int id = u.getId();
         if (u != null) {
             httpSession.setAttribute("sessionUser", u);
+            httpSession.setAttribute("sessionId", id);
             if(userId==1){
             	return ResponseUtil.successValidation(MessageConstants.USER_LOGIN_ADMIN);
             }else{
@@ -173,6 +180,7 @@ public class UserController {
             ValidationResponse res = userService.save(user, httpSession);
             if (res.success()) {
                 httpSession.setAttribute("sessionUser", userService.get(id));
+                
             }
             return res;
         }

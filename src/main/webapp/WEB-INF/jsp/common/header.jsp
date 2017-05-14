@@ -21,12 +21,13 @@
             </div>
 		   <section class="webdesigntuts-workshop">
 
-			<form action="" method="">		    
+			<form action="<c:url value="/t/search"/>" method="">		    
 				<input name="keywords" placeholder="热门帖子" id="keywords">	
-				<button onclick="search()" type="button" >搜索</button>
+				<button onclick="search()" type="submit" >搜索</button>
+				<!-- <button onclick="search()" type="button" >搜索</button> -->
 				 <%-- <a class="navbar-brand" href="<c:url value="/t/search"/>" type="submit">搜索</a> --%>
 			</form>
-			<script>
+			<!-- <script>
 				function search(){
 					var daa=$("#keywords").val();
 					var url ='<c:url value="/t/search"/>';
@@ -42,7 +43,7 @@
 				        }
 				    });
 				}
-			</script>
+			</script> -->
 		  </section>
 
             <%----%>

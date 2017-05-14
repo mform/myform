@@ -43,10 +43,11 @@
                         
                         <div class="post-bottom clearfix" >
 	                        <div class="author-div">
-	                         <a class="author-head" href="<c:url value="/u/user/${post.userId}"/>"><img src="<c:url value="/resource/upload/photo/"/>"></a>
+	                         <a class="author-head" href="<c:url value="/u/user/${post.userId}"/>">${post.userUsername}</a>
 	                        </div>
 	                        <div class="author-content">
-	                        	<span>${post.userUsername}</span>
+	                        	<%-- <span>${post.userUsername}</span>
+	                        	<a class="author-head" href="<c:url value="/u/user/${post.userId}"/>">${post.userUsername}</a> --%>
 	                            <spring:eval expression="post.createTime"/>
 	                        </div>       
                         </div>
