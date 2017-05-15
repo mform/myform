@@ -60,6 +60,7 @@ public class TopicController {
 	@RequestMapping(value = "/t/search")
 	public ModelAndView search(String keywords,Integer p) {
         Page page = new Page();
+        System.out.println("!!!!!!!!!!!!!!!!!!:"+keywords);
         if(p != null) page.setCurrentPage(p);
         page.setUrl("/t/search?p=");
         List<Post> posts = postService.getByKeyWords(keywords,page);

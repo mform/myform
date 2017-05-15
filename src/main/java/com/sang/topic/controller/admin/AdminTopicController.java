@@ -1,9 +1,14 @@
 package com.sang.topic.controller.admin;
 
+import com.sang.topic.common.constants.MessageConstants;
 import com.sang.topic.common.entity.Topic;
 import com.sang.topic.service.TopicService;
+import com.sang.topic.util.ResponseUtil;
 import com.sang.topic.common.model.Page;
+import com.sang.topic.common.model.ValidationResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,7 +43,7 @@ public class AdminTopicController {
         return resultMap;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+   /* @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Map<String, Object> update(@PathVariable Integer id, Integer discard){
         Map<String, Object> resultMap = new HashMap<>();
         if(id != null && discard != null ){
@@ -53,6 +58,23 @@ public class AdminTopicController {
         resultMap.put("success", false);
         resultMap.put("message", "失败");
         return resultMap;
+    }*/
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ValidationResponse update(@PathVariable Integer id, Integer discard){
+        Map<String, Object> resultMap = new HashMap<>();
+        if(id != null && discard != null ){
+            Topic topic = topicService.get(id);
+            topic.setClose(discard);
+            if(topic != null){
+            	
+                topicService.update(topic);
+                resultMap.put("success", true);
+                return ResponseUtil.successValidation(MessageConstants.FIELD_VALIDATION_SUCCESS);
+            }
+        }
+        resultMap.put("success", false);
+        resultMap.put("message", "失败");
+        return ResponseUtil.failValidation(MessageConstants.FIELD_VALIDATION_FAIL);
     }
 
 }

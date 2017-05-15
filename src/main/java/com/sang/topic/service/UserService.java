@@ -95,7 +95,7 @@ public class UserService {
         String message;
         User sessionUser = (User) httpSession.getAttribute("sessionUser");
         if (sessionUser != null && sessionUser.getId().equals(user.getId())) {
-            user.setUsername(null);
+            user.setUsername(user.getUsername());
             int n = userMapper.updateByPrimaryKeySelective(user);
             if (n > 0) {
                 return ResponseUtil.successValidation(MessageConstants.USER_SAVE_SUCCESS);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class UploadController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/photo", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/photo", method = RequestMethod.POST)
     public ValidationResponse uploadUserPhoto(@RequestParam("photo") MultipartFile file, HttpServletRequest request) {
         try {
             return userService.savePhoto(file, request.getSession());
@@ -32,5 +33,25 @@ public class UploadController {
 
             return ResponseUtil.failValidation(MessageConstants.UPLOAD_FAIL);
         }
+    }*/
+    @RequestMapping(value = "/photo", method = RequestMethod.POST)
+    public ModelAndView uploadUserPhoto(@RequestParam("photo") MultipartFile file, HttpServletRequest request) {
+       /* try {
+            return userService.savePhoto(file, request.getSession());
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            return ResponseUtil.failValidation(MessageConstants.UPLOAD_FAIL);
+        }*/
+        try {
+			userService.savePhoto(file, request.getSession());
+			return new ModelAndView("user/upload-success");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			ResponseUtil.failValidation(MessageConstants.UPLOAD_FAIL);
+			e.printStackTrace();
+			return new ModelAndView("user/upload-fail");
+		}
+        
     }
 }

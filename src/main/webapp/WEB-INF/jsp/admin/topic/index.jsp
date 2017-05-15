@@ -19,7 +19,7 @@
                 <th>操作</th>
             </tr>
             <c:forEach items="${topics}" var="topic">
-                <tr> <c:if test="${topic.close==1}">class="danger"</c:if></tr>
+                <tr> <c:if test="${topic.close==1}"></c:if></tr>
                 <td>${topic.id}</td>
                 <td>${topic.name}</td>
                 <td>${topic.url}</td>

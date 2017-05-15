@@ -152,10 +152,8 @@ public class UserController {
     public ValidationResponse valid(String username, String password, HttpSession httpSession) {
         User u = userService.getByUsernameAndPassword(username, SecurityUtil.MD5(password));
         int userId=userService.getIDByUserName(username);
-        int id = u.getId();
         if (u != null) {
             httpSession.setAttribute("sessionUser", u);
-            httpSession.setAttribute("sessionId", id);
             if(userId==1){
             	return ResponseUtil.successValidation(MessageConstants.USER_LOGIN_ADMIN);
             }else{

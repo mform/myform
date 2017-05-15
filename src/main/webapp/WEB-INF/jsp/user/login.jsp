@@ -29,7 +29,7 @@
                 <div class="col-sm-8">
                     <div class="checkbox">
                         <label><input type="checkbox" name="rememberPassword">记住密码</label>
-                        <a class="pwd_right" href ="<c:url value="/u/user/forget-pwd"/>">忘记密码</a>
+                       <%--  <a class="pwd_right" href ="<c:url value="/u/user/forget-pwd"/>">忘记密码</a> --%>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,6 @@
         });
     	function myAjaxForm(parameters) {
     	    var url = parameters.url;
-    	    console.log(url);
     	    var params = parameters.params;
     	    var $formAlert = parameters.$formAlert;
     	    var callback = parameters.callback;
@@ -95,7 +94,7 @@
     	            
     	            if(data.message=="管理员登录"){
     	         	   console.log(data.message);
-    	         	   window.location.href = '<c:url value="/admin"/>';
+    	         	   window.location.href = '<c:url value="/admin/topic/"/>';
     	            }else{
     	         	   window.location.href = '<c:url value="/"/>';
     	            }

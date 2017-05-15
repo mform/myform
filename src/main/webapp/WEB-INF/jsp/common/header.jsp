@@ -22,7 +22,7 @@
 		   <section class="webdesigntuts-workshop">
 
 
-			<form action="<c:url value="/t/search"/>" method="">		    
+			<form action="<c:url value="/t/search"/>" method="post">		    
 				<input name="keywords" placeholder="热门帖子" id="keywords">	
 				<button onclick="search()" type="submit" >搜索</button>
 				<!-- <button onclick="search()" type="button" >搜索</button> -->
@@ -64,7 +64,7 @@
 						    <ul class="button-dropdown-list is-below">
 						    <c:choose>
 						      <c:when test="${sessionUser.id == 1}">
-							      <li><a href="<c:url value="/admin"/>"><i class="fa fa-users"></i>&nbsp; 管理员界面</a></li>
+							      <li><a href="<c:url value="/admin/topic"/>"><i class="fa fa-users"></i>&nbsp; 管理员界面</a></li>
 							      <li><a href="<c:url value="/u/${sessionUser.id}"/>"><i class="fa fa-heart-o"></i>&nbsp;  个人信息</a></li>
 							      <li><a href="<c:url value="/p/new?topicId=${id}"/>"><i class="fa fa-file-text"></i>&nbsp;  发帖子</a></li>
 							      <li class="button-dropdown-divider">
