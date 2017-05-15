@@ -53,7 +53,7 @@
 				<div id="formAlert" class="alert hidden" role="alert"></div>
 				<div class="col-md-12">
 					<span class="col-md-7"></span> <input class="btn btn-default"
-						type="submit" value="注册" />
+						type="button" id ="subform" value="注册" />
 				</div>
 			</form:form>
 		</div>
@@ -62,21 +62,25 @@
 	<script>
 	    var randomCode=null;
 	    var form_randomCode=null;
-	    $("#user-add").bind("submit", function(){
-	       console.log(randomCode);
-	       form_randomCode=$("#radomCode").val();
-	       console.log("add"+form_randomCode);
+	    $("#subform").click(function(){
+	    	form_randomCode=myform.radomCode.value;
+	       if(form_randomCode==null||form_randomCode==""){
+	    	   alert("请输入验证码!");
+	       }else if(
+    		  form_randomCode!=randomCode){
+    	   	  alert("验证码不正确!");
+       	  }else {
+       		$(this).prop("type","submit");
+       	  }
+	       
+	       
 	    });
 		$(document).ready(dataBind("user-add", '${formUrl}', function() {
-			alert(222);
 			window.location.href = '<c:url value="/"/>';
 		}));
 		
 		$("#sendmail").click(function(){
-			console.log("aaa"+myform.radomCode.value);
 			var daa=$("#emailvalue").val();
-			form_randomCode=$("#radomCode").val();
-			console.log("value"+form_randomCode);
 			var url ='<c:url value="/u/sendmail"/>';
 			$.ajax({
 		        type: "post",

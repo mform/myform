@@ -5,13 +5,13 @@ package com.sang.topic.util;
 import java.util.Random;
 
 public class RandomChar {
-	public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static final String letterChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static final String upperLetterChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyz";
+	public static final String letterChar = "abcdefghijklmnopqrstuvwxyz";
+	//public static final String upperLetterChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String lowerLetterChar = "abcdefghijklmnopqrstuvwxyz";
 	public static final String numberChar = "0123456789";
 	public static final String numberLowerLetterChar = "0123456789abcdefghijklmnopqrstuvwxyz";
-	public static final String numberUpperLetterChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	//public static final String numberUpperLetterChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	
 	/**
@@ -41,11 +41,11 @@ public class RandomChar {
 		return sb.toString();
 	}
 
-	
-	/**
+/*	
+	*//**
 	 * 获得随机数   数字加大写字母随机组合
 	 * @param n 代表生成几位验证码
-	 */
+	 *//*
 	public static String getRandomUpperLetterChar(int n) {
 		StringBuffer sb = new StringBuffer();
 		Random random = new Random();
@@ -54,7 +54,7 @@ public class RandomChar {
 		}
 		return sb.toString();
 	}
-
+*/
 	/**
 	 * 获得随机数   小写字母随机组合
 	 * @param n 代表生成几位验证码
@@ -95,11 +95,11 @@ public class RandomChar {
 		return sb.toString();
 	}
 
-	
-	/**
+/*	
+	*//**
 	 * 获得随机数   数字加大写字母随机组合
 	 * @param n 代表生成几位验证码
-	 */
+	 *//*
 	public static String getRandomNumberUpperLetterChar(int n) {
 		StringBuffer sb = new StringBuffer();
 		Random random = new Random();
@@ -108,6 +108,6 @@ public class RandomChar {
 		}
 		return sb.toString();
 	}
-
+*/
 }
 
