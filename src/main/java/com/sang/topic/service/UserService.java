@@ -60,6 +60,10 @@ public class UserService {
             return list.get(0);
         return null;
     }
+    
+    public void deleteUser(int id) {
+         userMapper.deleteByPrimaryKey(id);
+    }
 
     /**
      * 用户注册

@@ -31,14 +31,18 @@
                     <td>${user.phone}</td>
                     <td><c:if test="${user.ban==1}">禁言</c:if></td>
                     <td>
-                        <a href="">禁用</a>
-                        <a href="">解禁</a>
+                        <%-- <a href="<c:url value="/admin/user/${user.id}"/>">删除</a> --%>
+                       <button onclick="myAjaxForm({url : '<c:url value="/admin/user/d/${user.id}"/>', params : {_method:'delete'}})">删除</button>
                     </td>
                 </tr>
+                <script>
+                var id=${user.id};
+                </script>
             </c:forEach>
         </table>
         <jsp:include page="../../common/page.jsp"/>
     </div>
 </div>
+
 </body>
 </html>

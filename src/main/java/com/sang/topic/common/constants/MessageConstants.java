@@ -21,6 +21,8 @@ public interface MessageConstants {
     String USER_SAVE_FAIL = "用户信息保存失败";
     String USER_SAVE_SUCCESS = "用户信息保存成功";
 
+    String DELETE_USER_SUCCESS = "删除用户成功";
+    String DELETE_USER_FAIL = "删除用户失败";
 
     String POST_CREATE_SUCCESS = "发表成功";
     String POST_CREATE_FAIL = "发表失败";

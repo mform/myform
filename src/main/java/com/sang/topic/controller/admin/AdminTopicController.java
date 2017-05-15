@@ -34,13 +34,13 @@ public class AdminTopicController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public Map<String, Object> create(@ModelAttribute Topic topic) {
+    public ValidationResponse create(@ModelAttribute Topic topic) {
         Map<String, Object> resultMap = new HashMap<>();
         int n = topicService.insert(topic);
         if(n > 0){
             resultMap.put("success", true);
         }
-        return resultMap;
+        return ResponseUtil.successValidation(MessageConstants.FIELD_VALIDATION_SUCCESS);
     }
 
    /* @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
