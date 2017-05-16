@@ -81,10 +81,12 @@ public class TopicController {
         page.setUrl("/t/"+id+"?p=");
 
         List<Topic> topics = topicService.selectAllOpen();
+        List<User> users = userService.selectOrderUsers();
         List<Post> posts = postService.getByTopicAndPage(id, page);
 
         Map<String, Object> map = new HashMap<>();
         map.put("topics", topics);
+        map.put("users", users);
         map.put("posts", posts);
         map.put("page", page);
         return new ModelAndView("topic/index", map);
