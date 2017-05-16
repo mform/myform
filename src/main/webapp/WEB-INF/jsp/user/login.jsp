@@ -29,7 +29,7 @@
                 <div class="col-sm-8">
                     <div class="checkbox">
                         <label><input type="checkbox" name="rememberPassword">记住密码</label>
-                       <%--  <a class="pwd_right" href ="<c:url value="/u/user/forget-pwd"/>">忘记密码</a> --%>
+                        <a class="pwd_right" href ="<c:url value="/u/user/forget-pwd"/>">忘记密码</a>
                     </div>
                 </div>
             </div>

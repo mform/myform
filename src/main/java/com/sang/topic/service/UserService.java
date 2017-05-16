@@ -129,6 +129,7 @@ public class UserService {
             return ResponseUtil.failValidation(MessageConstants.USER_PASSWORD_FAIL);
         }
     }
+    
 
     /**
      * 上传图片并保存为用户头像
@@ -149,5 +150,21 @@ public class UserService {
             return save(user, httpSession);
         }
         return ResponseUtil.failValidation(MessageConstants.USER_LOGIN_REQUIRE);
+    }
+    
+    /**
+     * 重置密码
+     * @param user
+     * @param newPassword
+     * @return
+     */
+    @Transactional
+    public String resetPassword(User user, String newPassword) {
+        if(!SecurityUtil.MD5(newPassword).equals(user.getPassword())){
+            user.setPassword(SecurityUtil.MD5(newPassword));
+            userMapper.updateByPrimaryKeySelective(user);
+            return "重置成功";
+        }
+        return "与当前密码一致，无需重置";
     }
 }

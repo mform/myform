@@ -22,9 +22,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/u")
@@ -35,6 +38,11 @@ public class UserController {
     @Autowired
     private UserService userService;
     Logger logger = Logger.getLogger(UserController.class);
+    
+    private String email_host="smtp.163.com";
+    private String email_form="18970987553@163.com";
+    private String email_username="18970987553@163.com";
+    private String email_password="wzt3050317";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
@@ -59,11 +67,6 @@ public class UserController {
     @RequestMapping(value = "/user/forget-pwd", method = RequestMethod.GET)
     public ModelAndView forgetPassword() {
         return new ModelAndView("user/forget-pwd");
-    }
-    @RequestMapping(value = "/user/waiting-email", method = RequestMethod.GET)
-    public ModelAndView waitingEmail() {
-    	
-        return new ModelAndView("user/waiting-email");
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -207,18 +210,70 @@ public class UserController {
     @RequestMapping(value="/sendmail")
     @ResponseBody
     public String sendMiail(@RequestBody String emailvalue,HttpSession session){
-    	String host="smtp.163.com";
-		String form="18970987553@163.com";
 		String subject="注册账号";
 		String randomCode=RandomChar.getRandomALLChar(4);
 		session.removeAttribute("randomCode");
 		session.setAttribute("randomCode", randomCode);
 		session.setMaxInactiveInterval(30);
-		String body="您的验证码为；"+randomCode;
-		String username="18970987553@163.com";
-		String password="wzt3050317";
-    	JavaMailUtil.sendEmail(host, form, emailvalue, subject, body, username, password);
+		String body="您的解惑网注册验证码为；"+randomCode;
+    	JavaMailUtil.sendEmail(email_host, email_form, emailvalue, subject, body, email_username, email_password);
     	return randomCode;
+    }
+    
+    @RequestMapping(value = "/user/sentUrl")
+    @ResponseBody
+    public String waitingEmail(@RequestBody String username,HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    	User user=userService.getByUsername(username);
+    	//HttpSession session=request.getSession();
+    	response.setHeader("Content-type", "text/html;charset=UTF-8");  
+    	//这句话的意思，是告诉servlet用UTF-8转码，而不是用默认的ISO8859  
+    	response.setCharacterEncoding("UTF-8");
+    	
+    	String returnMsg=null;
+    	if(user==null){
+    		returnMsg ="此用户名不存在,请重新输入!";
+    		return(returnMsg);
+    		//session.setAttribute("resMsg", "此用户名不存在,请重新输入!");
+    	}else{
+    		String email = user.getEmail();
+        	String subject="找回密码";
+        	//项目路径：/topic
+        	String path=request.getContextPath();
+        	//访问路径：http://localhost:8080/topic
+    		String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+    		//http://localhost:8080/topic/u/user/sentUrl
+    		String url="请勿回复本邮件.点击下面的链接,输入验证码并重设密码，需要重新申请找回密码."+basePath+"/u/user/resetPwd?username="+username+"";
+    		JavaMailUtil.sendEmail(email_host, email_form, email, subject, url, email_username, email_password);
+    		//session.setAttribute("resMsg", "提交成功，请进入邮箱点击链接进行修改密码");
+    		returnMsg = "提交成功，请进入邮箱点击链接进行修改密码";
+    		return(returnMsg);
+    	}
+    	
+       // return new ModelAndView("user/waiting-email");
+    }
+    
+    @RequestMapping(value = "user/resetPwd")
+	public ModelAndView search(HttpServletRequest request) {
+    	Map keymap = request.getParameterMap(); 
+    	String username=((String[]) keymap.get("username"))[0];
+    	User user=userService.getByUsername(username);
+    	Map<String, Object> map = new HashMap<>();
+        map.put("user", user);
+        return new ModelAndView("user/reset-pwd", map);
+    }
+    
+    /**
+     * 重置用户密码
+     */
+    @RequestMapping(value = "/user/resetpassword", method = RequestMethod.POST)
+    @ResponseBody
+    public String resetPassword(@RequestBody Map<String,String> map , HttpSession httpSession) {
+    	String username= map.get("username");
+    	User user=userService.getByUsername(username);
+    	String newpassword= map.get("newpassword");
+    	String msg=userService.resetPassword(user, newpassword);
+      
+    	return (msg);
     }
     
     

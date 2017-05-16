@@ -52,8 +52,8 @@
 				</div>
 				<div id="formAlert" class="alert hidden" role="alert"></div>
 				<div class="col-md-12">
-					<span class="col-md-7"></span> <input class="btn btn-default"
-						type="button" id ="subform" value="注册" />
+					<span class="col-md-7"></span> 
+					<input class="btn btn-default" type="button" id ="subform" value="注册" />
 				</div>
 			</form:form>
 		</div>
