@@ -18,10 +18,11 @@
                 <th>email</th>
                 <th>role</th>
                 <th>phone</th>
-                <th>ban</th>
+                <!-- <th>ban</th> -->
                 <th>opt</th>
             </tr>
             <c:forEach items="${users}" var="user">
+            <c:if test="${user.id != 1}"> 
                 <tr>
                     <td>${user.id}</td>
                     <td><a href="<c:url value="/u/${user.username}"/>">${user.username}</a></td>
@@ -29,20 +30,55 @@
                     <td>${user.email}</td>
                     <td>${user.roleId}</td>
                     <td>${user.phone}</td>
-                    <td><c:if test="${user.ban==1}">禁言</c:if></td>
+                    <script>
+	                var id=${user.id};
+	                var url="/admin/user/d/"+id;
+	                </script>
                     <td>
                         <%-- <a href="<c:url value="/admin/user/${user.id}"/>">删除</a> --%>
-                       <button onclick="myAjaxForm({url : '<c:url value="/admin/user/d/${user.id}"/>', params : {_method:'delete'}})">删除</button>
+                       <%--  "myAjaxForm({url : '<c:url value="/admin/user/d/${user.id}"/>', params : {_method:'delete'}})" --%>
+                       <button onclick="deleteuser()">删除</button>
                     </td>
                 </tr>
                 <script>
                 var id=${user.id};
                 </script>
+              </c:if>
             </c:forEach>
         </table>
         <jsp:include page="../../common/page.jsp"/>
     </div>
 </div>
-
+<script>
+	function deleteuser(){
+		
+	  var url="/topic//admin/user/d/"+id;
+		myAjaxForm({url : url, params : {_method:'delete'}});
+		function myAjaxForm(parameters) {
+    	    var url = parameters.url;
+    	    var params = parameters.params;
+    	    var $formAlert = parameters.$formAlert;
+    	    var callback = parameters.callback;
+    	    if (params == undefined)
+    	        params = $("#ajaxForm").serialize();
+    	    if ($formAlert == undefined)
+    	        $formAlert = $("#formAlert");
+    	    $.ajax({
+    	        type: "post",
+    	        url: url,
+    	        data: params,
+    	        dataType: "json",
+    	        success: function (data) {
+    	            if(data.message=="删除用户成功"){
+    	         	   alert("删除用户成功");
+    	         	  window.location.reload();
+    	            }else{
+    	            	alert("删除用户失败");
+    	            }
+    	        }
+    	    });
+    	}
+	}
+</script>
 </body>
 </html>

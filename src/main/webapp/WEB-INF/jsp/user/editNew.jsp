@@ -76,7 +76,7 @@
 	       
 	    });
 		$(document).ready(dataBind("user-add", '${formUrl}', function() {
-			window.location.href = '<c:url value="/"/>';
+			window.location.href = '<c:url value="/u/login"/>';
 		}));
 		
 		$("#sendmail").click(function(){

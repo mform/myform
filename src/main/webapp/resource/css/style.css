@@ -34,6 +34,10 @@ body{
     border-radius: 6px;
     background: #fff;
 }
+.pwd-name{
+	    width: 100px;
+    margin-left: 250px;
+}
 a:hover{
 	text-decoration:none;
 }

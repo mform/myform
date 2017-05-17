@@ -25,7 +25,7 @@
                     <li class="list-group-item">
                         <div class="post-bottom clearfix" >
 	                        <div class="author-div">
-	                         <a class="author-head" href="#">${post.userUsername}</a>
+	                        <a class="author-head" href="<c:url value="/u/user/${post.userId}"/>">${post.userUsername}</a>
 	                        </div>
 	                        <div class="author-content">
 	                        <%-- 	<span>${post.userUsername}</span> --%>
@@ -33,7 +33,7 @@
 	                        </div>       
                         </div>
                         <div class="post-top ">
-                            <a href="<c:url value="#"/>">${post.title}</a>
+                            <a href="<c:url value="/p/${post.id}"/>">${post.title}</a>
                         </div>
                         <div class="post-bottom">
                             <i class="fa fa-eye" title="浏览数"></i>${post.watchnumber }

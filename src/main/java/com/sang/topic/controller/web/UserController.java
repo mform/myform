@@ -142,8 +142,8 @@ public class UserController {
         }
         ValidationResponse res = userService.create(user);
         if (res.success()) {
-            User u = userService.getByUsername(user.getUsername());
-            httpSession.setAttribute("sessionUser", u);
+            /*User u = userService.getByUsername(user.getUsername());
+            httpSession.setAttribute("sessionUser", u);*/
         }
         return res;
     }
@@ -245,7 +245,7 @@ public class UserController {
     		String url="请勿回复本邮件.点击下面的链接,输入验证码并重设密码，需要重新申请找回密码."+basePath+"/u/user/resetPwd?username="+username+"";
     		JavaMailUtil.sendEmail(email_host, email_form, email, subject, url, email_username, email_password);
     		//session.setAttribute("resMsg", "提交成功，请进入邮箱点击链接进行修改密码");
-    		returnMsg = "提交成功，请进入邮箱点击链接进行修改密码";
+    		returnMsg = "success,please checkout your eamil";
     		return(returnMsg);
     	}
     	

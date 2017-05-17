@@ -11,7 +11,7 @@
 <div class="content">
     <div class="container">
         <div class="main-bar">
-            <jsp:include page="../common/nav.jsp"/>
+            <%-- <jsp:include page="../common/nav.jsp"/> --%>
             <%-- 帖子主要内容 --%>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="panel-body">
                     <pre>${post.content}</pre>
-                    <i id="content-agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a>  </i>
+                    <i id="content-agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a> 赞</a>  </i>
                 </div>
             </div>
             <script>var cid = new Array();</script>
@@ -36,7 +36,7 @@
                         <a href="<c:url value="/u/${comment.userUsername}"/>">${comment.userUsername}</a>:
                         发表时间：<spring:eval expression="comment.createTime"/>
                         <pre>${comment.content}</pre>
-                         <i id="agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a>0 赞</a> </i>
+                         <i id="agree" class="fa fa-heart-o " title="点赞数"> &nbsp;<a> 赞</a> </i>
                          <script>
                 
                          var id=${comment.id}
